@@ -1,0 +1,13 @@
+class,bits,description
+Fingerprinter,1024,Fingerprint of length 1024 and search depth of 8
+ExtendedFingerprinter,1024,Extends the Fingerprinter with additional bits describing ring features
+EStateFingerprinter,79,E-State fragments
+GraphOnlyFingerprinter,1024,Specialized version of the Fingerprinter which does not take bond orders into account
+MACCSFingerprinter,166,MACCS keys
+PubchemFingerprinter,881,Pubchem fingerprint
+SubstructureFingerprinter,307,Presence of SMARTS Patterns for Functional Group Classification by Christian Laggner
+SubstructureFingerprintCount,307,Count of SMARTS Patterns for Functional Group Classification by Christian Laggner
+KlekotaRothFingerprinter,4860,Presence of chemical substructures
+KlekotaRothFingerprintCount,4860,Count of chemical substructures
+AtomPairs2DFingerprinter,780,Presence of atom pairs at various topological distances
+AtomPairs2DFingerprintCount,780,Count of atom pairs at various topological distances
