@@ -140,7 +140,6 @@ def write_xml_string_to_tempfile(xml: str) -> str:
     """
 
     tree = ET.ElementTree(ET.fromstring(xml))
-    ET.indent(tree, space="\t", level=0)
     with NamedTemporaryFile("wb", delete=False, suffix=".xml") as xmlfile:
         tree.write(xmlfile)
         xml_file_name = xmlfile.name
