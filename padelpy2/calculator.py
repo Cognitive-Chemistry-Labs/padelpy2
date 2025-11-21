@@ -1,4 +1,4 @@
-from typing import Iterable, List
+from typing import Iterable, List, Union
 
 from rdkit.Chem import Mol
 
@@ -18,9 +18,9 @@ class Calculator:
 
     Parameters
     ----------
-    descriptors : Iterable[Descriptor | Fingerprint]
+    descriptors : Iterable[Union[Descriptor, Fingerprint]]
         An iterable of Descriptor or Fingerprint objects.
-    config : PaDELConfig, optional
+    config : Union[PaDELConfig, None], optional
         Configuration for PaDEL. If None, a default configuration is used
         (default=None).
 
@@ -40,8 +40,8 @@ class Calculator:
 
     def __init__(
             self,
-            descriptors: Iterable[Descriptor | Fingerprint],
-            config: PaDELConfig | None = None
+            descriptors: Iterable[Union[Descriptor, Fingerprint]],
+            config: Union[PaDELConfig, None] = None
          ):
 
         if config is None:

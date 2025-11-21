@@ -1,7 +1,7 @@
 from os import PathLike, remove
 from subprocess import PIPE, Popen, TimeoutExpired
 from tempfile import NamedTemporaryFile
-from typing import Iterable, List, Tuple
+from typing import Iterable, List, Tuple, Union
 from xml.etree import ElementTree as ET
 
 from rdkit import Chem
@@ -10,7 +10,7 @@ from rdkit.Chem import Mol
 from padelpy2.descriptors import Descriptor, Fingerprint
 
 
-def popen_timeout(command: str, timeout: int | None) -> Tuple[str, str]:
+def popen_timeout(command: str, timeout: Union[int, None]) -> Tuple[str, str]:
     """
     Run a subprocess command with an optional timeout.
 
@@ -18,7 +18,7 @@ def popen_timeout(command: str, timeout: int | None) -> Tuple[str, str]:
     ----------
     command : str
         The command to be executed.
-    timeout : int or None
+    timeout : Union[int, None]
         The maximum time (in seconds) to wait for the command to complete. If
         None, there is no timeout.
 
@@ -39,7 +39,7 @@ def popen_timeout(command: str, timeout: int | None) -> Tuple[str, str]:
 
 
 def create_descriptortypes_xml(
-        descriptors: Iterable[Descriptor | Fingerprint]
+        descriptors: Iterable[Union[Descriptor, Fingerprint]]
      ) -> str:
     """
     Create an XML string for descriptor types.
@@ -51,7 +51,7 @@ def create_descriptortypes_xml(
 
     Parameters
     ----------
-    descriptors : Iterable[Descriptor | Fingerprint]
+    descriptors : Iterable[Union[Descriptor, Fingerprint]]
         An iterable containing instances of Descriptor or Fingerprint classes.
         Each instance represents a specific type of descriptor or fingerprint
         to include in the XML configuration.
@@ -92,7 +92,7 @@ def create_descriptortypes_xml(
 
 
 def count_descriptor_types(
-        descriptors: Iterable[Descriptor | Fingerprint]
+        descriptors: Iterable[Union[Descriptor, Fingerprint]]
      ) -> Tuple[int, int, int]:
     """
     Count the number of 2D descriptors, 3D descriptors, and fingerprints.
