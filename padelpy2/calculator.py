@@ -3,7 +3,8 @@ from typing import Iterable, List, Union
 from rdkit.Chem import Mol
 
 from padelpy2.config import PaDELConfig
-from padelpy2.descriptors import Descriptor, Fingerprint
+from padelpy2.descriptors import Descriptor
+from padelpy2.fingerprints import Fingerprint
 from padelpy2.results import PaDELResults
 from padelpy2.utils import check_for_invalid_mols, count_descriptor_types, \
     create_descriptortypes_xml, remove_files, write_mols_to_tempfile, \

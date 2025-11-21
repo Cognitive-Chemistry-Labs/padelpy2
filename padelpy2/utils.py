@@ -7,7 +7,8 @@ from xml.etree import ElementTree as ET
 from rdkit import Chem
 from rdkit.Chem import Mol
 
-from padelpy2.descriptors import Descriptor, Fingerprint
+from padelpy2.descriptors import Descriptor
+from padelpy2.fingerprints import Fingerprint
 
 
 def popen_timeout(command: str, timeout: Union[int, None]) -> Tuple[str, str]:
