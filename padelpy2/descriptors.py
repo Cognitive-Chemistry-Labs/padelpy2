@@ -8,12 +8,6 @@ DESC_PATH = join(
     "descriptors.csv"
 )
 
-FP_PATH = join(
-    dirname(abspath(__file__)),
-    "PaDEL-Descriptor",
-    "fingerprints.csv"
-)
-
 
 class Descriptor:
     """
@@ -48,36 +42,6 @@ class Descriptor:
         self.descriptors = [r["descriptor"] for r in rows]
         self.descriptions = [r["description"] for r in rows]
         self.is_3d = is_3d
-
-
-class Fingerprint:
-    """
-    A class to represent a fingerprint that can be used in molecular property
-    calculations.
-
-    Parameters
-    ----------
-    fp_class : str
-        The class name of the fingerprint.
-
-    Attributes
-    ----------
-    fp_class : str
-        The class name of the fingerprint.
-    n_bits : int
-        The number of bits for the fingerprint.
-    description : str
-        Description of the fingerprint.
-    """
-
-    def __init__(self, fp_class: str):
-
-        self.fp_class = fp_class
-        with open(FP_PATH, "r") as fpfile:
-            reader = DictReader(fpfile)
-            rows = [r for r in reader if r["class"] == self.fp_class]
-        self.n_bits = int(rows[0]["bits"])
-        self.description = rows[0]["description"]
 
 
 AcidicGroupCount = Descriptor("AcidicGroupCount", False)
@@ -147,19 +111,6 @@ MomentOfInertia = Descriptor("MomentOfInertia", True)
 PetitjeanShapeIndex = Descriptor("PetitjeanShapeIndex", True)
 RDF = Descriptor("RDF", True)
 WHIM = Descriptor("WHIM", True)
-
-Fingerprinter = Fingerprint("Fingerprinter")
-ExtendedFingerprinter = Fingerprint("ExtendedFingerprinter")
-EStateFingerprinter = Fingerprint("EStateFingerprinter")
-GraphOnlyFingerprinter = Fingerprint("GraphOnlyFingerprinter")
-MACCSFingerprinter = Fingerprint("MACCSFingerprinter")
-PubchemFingerprinter = Fingerprint("PubchemFingerprinter")
-SubstructureFingerprinter = Fingerprint("SubstructureFingerprinter")
-SubstructureFingerprintCount = Fingerprint("SubstructureFingerprintCount")
-KlekotaRothFingerprinter = Fingerprint("KlekotaRothFingerprinter")
-KlekotaRothFingerprintCount = Fingerprint("KlekotaRothFingerprintCount")
-AtomPairs2DFingerprinter = Fingerprint("AtomPairs2DFingerprinter")
-AtomPairs2DFingerprintCount = Fingerprint("AtomPairs2DFingerprintCount")
 
 descriptors = [
     ### inactivate with base PaDEL configuration
@@ -236,18 +187,3 @@ descriptors = [
 descriptors_2d = [d for d in descriptors if not d.is_3d]
 
 descriptors_3d = [d for d in descriptors if d.is_3d]
-
-fingerprints = [
-    Fingerprinter,
-    ExtendedFingerprinter,
-    EStateFingerprinter,
-    GraphOnlyFingerprinter,
-    MACCSFingerprinter,
-    PubchemFingerprinter,
-    SubstructureFingerprinter,
-    SubstructureFingerprintCount,
-    KlekotaRothFingerprinter,
-    KlekotaRothFingerprintCount,
-    AtomPairs2DFingerprinter,
-    AtomPairs2DFingerprintCount
-]
