@@ -1,11 +1,11 @@
 from typing import Iterable, List, Union
 
+import pandas as pd
 from rdkit.Chem import Mol
 
 from padelpy2.config import PaDELConfig
 from padelpy2.descriptors import Descriptor
 from padelpy2.fingerprints import Fingerprint
-from padelpy2.results import PaDELResults
 from padelpy2.utils import check_for_invalid_mols, count_descriptor_types, \
     create_descriptortypes_xml, remove_files, write_mols_to_tempfile, \
     write_xml_string_to_tempfile
@@ -52,7 +52,7 @@ class Calculator:
         self.xml = create_descriptortypes_xml(descriptors)
         self.n_2d, self.n_3d, self.n_fp = count_descriptor_types(descriptors)
 
-    def __call__(self, mols: List[Mol]) -> PaDELResults:
+    def __call__(self, mols: List[Mol]) -> pd.DataFrame:
         """
         Calculates descriptors and/or fingerprints for a list of RDKit Mol
         objects.
@@ -100,6 +100,7 @@ class Calculator:
             use_tempfile=True
         )
 
-        results = PaDELResults(results_file_name)
+        df = pd.read_csv(results_file_name)
+        df = df.drop(columns=["Name"])
         remove_files(xml_file_name, sd_file_name, results_file_name)
-        return results
+        return df
