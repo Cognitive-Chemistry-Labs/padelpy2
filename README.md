@@ -1,6 +1,11 @@
+![CogniChem Logo](https://cognichem.com/images/cc-logo-color.svg)
 # padelpy2
 
-**padelpy2** is a modern Python wrapper for the [PaDEL-Descriptor](http://www.yapcwsoft.com/dd/padeldescriptor/) software, enabling fast and flexible calculation of molecular descriptors and fingerprints directly from Python. It is designed for cheminformatics, QSAR/QSPR modeling, and molecular property analysis.
+[![GitHub version](https://badge.fury.io/gh/cognitive-chemistry-labs%2Fpadelpy2.svg)](https://badge.fury.io/gh/cognitive-chemistry-labs%2Fpadelpy2)
+[![PyPI version](https://badge.fury.io/py/padelpy2.svg)](https://badge.fury.io/py/padelpy2)
+[![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/LICENSE)
+
+**padelpy2** is a Python wrapper for the [PaDEL-Descriptor](http://www.yapcwsoft.com/dd/padeldescriptor/) software, enabling fast and flexible calculation of molecular descriptors and fingerprints directly from Python.
 
 ---
 
