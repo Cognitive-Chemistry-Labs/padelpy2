@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation &mdash; padelpy2 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="padelpy2 documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            padelpy2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.calculator.Calculator"><code class="docutils literal notranslate"><span class="pre">Calculator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.calculator.Calculator.config"><code class="docutils literal notranslate"><span class="pre">Calculator.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.calculator.Calculator.xml"><code class="docutils literal notranslate"><span class="pre">Calculator.xml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.calculator.Calculator.n_2d"><code class="docutils literal notranslate"><span class="pre">Calculator.n_2d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.calculator.Calculator.n_3d"><code class="docutils literal notranslate"><span class="pre">Calculator.n_3d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.calculator.Calculator.n_fp"><code class="docutils literal notranslate"><span class="pre">Calculator.n_fp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.config.PaDELConfig"><code class="docutils literal notranslate"><span class="pre">PaDELConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.config"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.convert3d"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.convert3d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.detectaromaticity"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.detectaromaticity</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.log"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.maxcpdperfile"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.maxcpdperfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.maxruntime"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.maxruntime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.removesalt"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.removesalt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.retain3d"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.retain3d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.retainorder"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.retainorder</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.sp_timeout"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.sp_timeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.standardizenitro"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.standardizenitro</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.standardizetautomers"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.standardizetautomers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.tautomerlist"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.tautomerlist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.threads"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.threads</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.usefilenameasmolname"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.usefilenameasmolname</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.config.PaDELConfig.waitingjobs"><code class="docutils literal notranslate"><span class="pre">PaDELConfig.waitingjobs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.descriptors.Descriptor"><code class="docutils literal notranslate"><span class="pre">Descriptor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.descriptors.Descriptor.desc_class"><code class="docutils literal notranslate"><span class="pre">Descriptor.desc_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.descriptors.Descriptor.descriptors"><code class="docutils literal notranslate"><span class="pre">Descriptor.descriptors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.descriptors.Descriptor.descriptions"><code class="docutils literal notranslate"><span class="pre">Descriptor.descriptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.descriptors.Descriptor.is_3d"><code class="docutils literal notranslate"><span class="pre">Descriptor.is_3d</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint"><code class="docutils literal notranslate"><span class="pre">Fingerprint</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint.fp_class"><code class="docutils literal notranslate"><span class="pre">Fingerprint.fp_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint.n_bits"><code class="docutils literal notranslate"><span class="pre">Fingerprint.n_bits</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint.description"><code class="docutils literal notranslate"><span class="pre">Fingerprint.description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.check_for_invalid_mols"><code class="docutils literal notranslate"><span class="pre">check_for_invalid_mols()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.count_descriptor_types"><code class="docutils literal notranslate"><span class="pre">count_descriptor_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.create_descriptortypes_xml"><code class="docutils literal notranslate"><span class="pre">create_descriptortypes_xml()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.popen_timeout"><code class="docutils literal notranslate"><span class="pre">popen_timeout()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.remove_files"><code class="docutils literal notranslate"><span class="pre">remove_files()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.write_mols_to_tempfile"><code class="docutils literal notranslate"><span class="pre">write_mols_to_tempfile()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.utils.write_xml_string_to_tempfile"><code class="docutils literal notranslate"><span class="pre">write_xml_string_to_tempfile()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padelpy2.wrapper.padeldescriptor"><code class="docutils literal notranslate"><span class="pre">padeldescriptor()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">padelpy2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-padelpy2">
+<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-padelpy2" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-padelpy2.calculator">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">padelpy2.calculator.</span></span><span class="sig-name descname"><span class="pre">Calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">descriptors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><span class="pre">Descriptor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><span class="pre">Fingerprint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#padelpy2.config.PaDELConfig" title="padelpy2.config.PaDELConfig"><span class="pre">PaDELConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#padelpy2.calculator.Calculator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to compute chemical descriptors and fingerprints using
+PaDEL-Descriptor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>descriptors</strong> (<em>Iterable</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><em>Descriptor</em></a><em>, </em><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><em>Fingerprint</em></a><em>]</em><em>]</em>) – An iterable of Descriptor or Fingerprint objects.</p></li>
+<li><p><strong>config</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#padelpy2.config.PaDELConfig" title="padelpy2.config.PaDELConfig"><em>PaDELConfig</em></a><em>, </em><em>None</em><em>]</em><em>, </em><em>optional</em>) – Configuration for PaDEL. If None, a default configuration is used
+(default=None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#padelpy2.calculator.Calculator.config" title="Link to this definition"></a></dt>
+<dd><p>The configuration settings for PaDEL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#padelpy2.config.PaDELConfig" title="padelpy2.config.PaDELConfig">PaDELConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator.xml">
+<span class="sig-name descname"><span class="pre">xml</span></span><a class="headerlink" href="#padelpy2.calculator.Calculator.xml" title="Link to this definition"></a></dt>
+<dd><p>An XML string representing the descriptor types to be computed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator.n_2d">
+<span class="sig-name descname"><span class="pre">n_2d</span></span><a class="headerlink" href="#padelpy2.calculator.Calculator.n_2d" title="Link to this definition"></a></dt>
+<dd><p>Number of 2D descriptors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator.n_3d">
+<span class="sig-name descname"><span class="pre">n_3d</span></span><a class="headerlink" href="#padelpy2.calculator.Calculator.n_3d" title="Link to this definition"></a></dt>
+<dd><p>Number of 3D descriptors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.calculator.Calculator.n_fp">
+<span class="sig-name descname"><span class="pre">n_fp</span></span><a class="headerlink" href="#padelpy2.calculator.Calculator.n_fp" title="Link to this definition"></a></dt>
+<dd><p>Number of fingerprints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-padelpy2.config">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">padelpy2.config.</span></span><span class="sig-name descname"><span class="pre">PaDELConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxruntime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitingjobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detectaromaticity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxcpdperfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removesalt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retain3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retainorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardizenitro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardizetautomers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tautomerlist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usefilenameasmolname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#padelpy2.config.PaDELConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration settings for PaDEL-Descriptor descriptor/fingerprint
+generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxruntime</strong> (<em>int</em><em>, </em><em>default=-1</em>) – Maximum running time per molecule (in milliseconds). Use -1 for
+unlimited. Default is -1.</p></li>
+<li><p><strong>waitingjobs</strong> (<em>int</em><em>, </em><em>default=-1</em>) – Maximum number of jobs to store in queue for worker threads to process.
+Use -1 to set it to 50*Max threads. Default is -1.</p></li>
+<li><p><strong>threads</strong> (<em>int</em><em>, </em><em>default=-1</em>) – Maximum number of threads to use. Use -1 to use as many threads as the
+number of CPU cores. Default is -1.</p></li>
+<li><p><strong>config</strong> (<em>PathLike</em><em>, </em><em>default=None</em>) – Configuration file. Default is None.</p></li>
+<li><p><strong>convert3d</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Convert molecule to 3D. Default is False.</p></li>
+<li><p><strong>detectaromaticity</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Remove existing aromaticity information and automatically detect
+aromaticity in the molecule before calculation of descriptors. Default
+is False.</p></li>
+<li><p><strong>log</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Create a log file. Name of log file is the name of the descriptors file
+with a .log extension. Default is False.</p></li>
+<li><p><strong>maxcpdperfile</strong> (<em>int</em><em>, </em><em>default=0</em>) – Maximum number of compounds to be stored in each descriptor file. Use 0
+for unlimited. Default is 0.</p></li>
+<li><p><strong>removesalt</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Remove salt from molecule. Default is False.</p></li>
+<li><p><strong>retain3d</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Retain 3D coordinates when standardizing structure. However, this may
+prevent some structures from being standardized. Default is False.</p></li>
+<li><p><strong>retainorder</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Retain order of molecules in structural files for descriptor file. This
+may lead to large memory use if descriptor calculations are stuck at
+one molecule as the others will not be written to file and cleared from
+memory. Default is True.</p></li>
+<li><p><strong>standardizenitro</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Standardize nitro groups to N(:O):O. Default is False.</p></li>
+<li><p><strong>standardizetautomers</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Standardize tautomers. Default is False.</p></li>
+<li><p><strong>tautomerlist</strong> (<em>PathLike</em><em>, </em><em>default=None</em>) – SMIRKS tautomers file. Default is None.</p></li>
+<li><p><strong>usefilenameasmolname</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Use filename (minus the extension) as molecule name. Default is False.</p></li>
+<li><p><strong>sp_timeout</strong> (<em>int</em><em>, </em><em>default=Nonea</em>) – Timeout for subprocess execution in seconds. Default is None (no
+timeout).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.config">
+<span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.convert3d">
+<span class="sig-name descname"><span class="pre">convert3d</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.convert3d" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.detectaromaticity">
+<span class="sig-name descname"><span class="pre">detectaromaticity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.detectaromaticity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.log" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.maxcpdperfile">
+<span class="sig-name descname"><span class="pre">maxcpdperfile</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.maxcpdperfile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.maxruntime">
+<span class="sig-name descname"><span class="pre">maxruntime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.maxruntime" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.removesalt">
+<span class="sig-name descname"><span class="pre">removesalt</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.removesalt" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.retain3d">
+<span class="sig-name descname"><span class="pre">retain3d</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.retain3d" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.retainorder">
+<span class="sig-name descname"><span class="pre">retainorder</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.retainorder" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.sp_timeout">
+<span class="sig-name descname"><span class="pre">sp_timeout</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.sp_timeout" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.standardizenitro">
+<span class="sig-name descname"><span class="pre">standardizenitro</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.standardizenitro" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.standardizetautomers">
+<span class="sig-name descname"><span class="pre">standardizetautomers</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.standardizetautomers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.tautomerlist">
+<span class="sig-name descname"><span class="pre">tautomerlist</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.tautomerlist" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.threads">
+<span class="sig-name descname"><span class="pre">threads</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.threads" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.usefilenameasmolname">
+<span class="sig-name descname"><span class="pre">usefilenameasmolname</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.usefilenameasmolname" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.config.PaDELConfig.waitingjobs">
+<span class="sig-name descname"><span class="pre">waitingjobs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#padelpy2.config.PaDELConfig.waitingjobs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-padelpy2.descriptors">
+<dt class="sig sig-object py" id="padelpy2.descriptors.Descriptor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">padelpy2.descriptors.</span></span><span class="sig-name descname"><span class="pre">Descriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#padelpy2.descriptors.Descriptor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a descriptor that can be used in molecular property
+calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>desc_class</strong> (<em>str</em>) – The class name of the descriptor.</p></li>
+<li><p><strong>is_3d</strong> (<em>bool</em>) – Indicates whether the descriptor is 3D.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.descriptors.Descriptor.desc_class">
+<span class="sig-name descname"><span class="pre">desc_class</span></span><a class="headerlink" href="#padelpy2.descriptors.Descriptor.desc_class" title="Link to this definition"></a></dt>
+<dd><p>The class name of the descriptor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.descriptors.Descriptor.descriptors">
+<span class="sig-name descname"><span class="pre">descriptors</span></span><a class="headerlink" href="#padelpy2.descriptors.Descriptor.descriptors" title="Link to this definition"></a></dt>
+<dd><p>List of descriptor names associated with this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.descriptors.Descriptor.descriptions">
+<span class="sig-name descname"><span class="pre">descriptions</span></span><a class="headerlink" href="#padelpy2.descriptors.Descriptor.descriptions" title="Link to this definition"></a></dt>
+<dd><p>List of descriptions for each descriptor in <cite>descriptors</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.descriptors.Descriptor.is_3d">
+<span class="sig-name descname"><span class="pre">is_3d</span></span><a class="headerlink" href="#padelpy2.descriptors.Descriptor.is_3d" title="Link to this definition"></a></dt>
+<dd><p>Indicates whether the descriptor is 3D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-padelpy2.fingerprints">
+<dt class="sig sig-object py" id="padelpy2.fingerprints.Fingerprint">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">padelpy2.fingerprints.</span></span><span class="sig-name descname"><span class="pre">Fingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#padelpy2.fingerprints.Fingerprint" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a fingerprint that can be used in molecular property
+calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fp_class</strong> (<em>str</em>) – The class name of the fingerprint.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.fingerprints.Fingerprint.fp_class">
+<span class="sig-name descname"><span class="pre">fp_class</span></span><a class="headerlink" href="#padelpy2.fingerprints.Fingerprint.fp_class" title="Link to this definition"></a></dt>
+<dd><p>The class name of the fingerprint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.fingerprints.Fingerprint.n_bits">
+<span class="sig-name descname"><span class="pre">n_bits</span></span><a class="headerlink" href="#padelpy2.fingerprints.Fingerprint.n_bits" title="Link to this definition"></a></dt>
+<dd><p>The number of bits for the fingerprint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="padelpy2.fingerprints.Fingerprint.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#padelpy2.fingerprints.Fingerprint.description" title="Link to this definition"></a></dt>
+<dd><p>Description of the fingerprint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-padelpy2.utils">
+<dt class="sig sig-object py" id="padelpy2.utils.check_for_invalid_mols">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">check_for_invalid_mols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Mol</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#padelpy2.utils.check_for_invalid_mols" title="Link to this definition"></a></dt>
+<dd><p>Check for invalid molecules in terms of atom count and 3D conformers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mols</strong> (<em>List</em><em>[</em><em>Mol</em><em>]</em>) – A list of molecule objects to be checked.</p></li>
+<li><p><strong>check_3d</strong> (<em>bool</em>) – If True, checks whether each molecule has at least one 3D conformer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – <ul class="simple">
+<li><p>If any molecule has more than 999 atoms.
+    - If <cite>check_3d</cite> is True and a molecule does not have a 3D conformer.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.count_descriptor_types">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">count_descriptor_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">descriptors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><span class="pre">Descriptor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><span class="pre">Fingerprint</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#padelpy2.utils.count_descriptor_types" title="Link to this definition"></a></dt>
+<dd><p>Count the number of 2D descriptors, 3D descriptors, and fingerprints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>descriptors</strong> (<em>Iterable</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><em>Descriptor</em></a><em>, </em><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><em>Fingerprint</em></a><em>]</em><em>]</em>) – An iterable containing Descriptor and/or Fingerprint objects.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>int</em> – The number of 2D descriptors.</p></li>
+<li><p><em>int</em> – The number of 3D descriptors.</p></li>
+<li><p><em>int</em> – The number of fingerprints.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.create_descriptortypes_xml">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">create_descriptortypes_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">descriptors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><span class="pre">Descriptor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><span class="pre">Fingerprint</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#padelpy2.utils.create_descriptortypes_xml" title="Link to this definition"></a></dt>
+<dd><p>Create an XML string for descriptor types.</p>
+<p>This function generates an XML formatted string that specifies the types of
+2D, 3D descriptors, and fingerprints to be used in molecular descriptor/
+fingerprint calculations. The resulting XML can be used as input for PaDEL-
+Descriptor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>descriptors</strong> (<em>Iterable</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="#padelpy2.descriptors.Descriptor" title="padelpy2.descriptors.Descriptor"><em>Descriptor</em></a><em>, </em><a class="reference internal" href="#padelpy2.fingerprints.Fingerprint" title="padelpy2.fingerprints.Fingerprint"><em>Fingerprint</em></a><em>]</em><em>]</em>) – An iterable containing instances of Descriptor or Fingerprint classes.
+Each instance represents a specific type of descriptor or fingerprint
+to include in the XML configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string containing the XML representation of the specified descriptors
+and fingerprints, formatted for use with PaDEL-Descriptor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.popen_timeout">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">popen_timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#padelpy2.utils.popen_timeout" title="Link to this definition"></a></dt>
+<dd><p>Run a subprocess command with an optional timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> (<em>str</em>) – The command to be executed.</p></li>
+<li><p><strong>timeout</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>None</em><em>]</em>) – The maximum time (in seconds) to wait for the command to complete. If
+None, there is no timeout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the stdout and stderr of the command.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.remove_files">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">remove_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#padelpy2.utils.remove_files" title="Link to this definition"></a></dt>
+<dd><p>Remove files from specified paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*paths</strong> (<em>PathLike</em>) – Variable length argument list of file paths to be removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.write_mols_to_tempfile">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">write_mols_to_tempfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Mol</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#padelpy2.utils.write_mols_to_tempfile" title="Link to this definition"></a></dt>
+<dd><p>Write a list of molecule objects to a temporary SDF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mols</strong> (<em>List</em><em>[</em><em>Mol</em><em>]</em>) – A list of molecule objects to be written to the file. Each object
+should be an instance of the RDKit Mol class.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The name (path) of the created temporary SDF file containing the
+molecules.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="padelpy2.utils.write_xml_string_to_tempfile">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.utils.</span></span><span class="sig-name descname"><span class="pre">write_xml_string_to_tempfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#padelpy2.utils.write_xml_string_to_tempfile" title="Link to this definition"></a></dt>
+<dd><p>Write an XML string to a temporary file and return the file name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xml</strong> (<em>str</em>) – The XML string to be written to a temporary file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The file path of the created temporary XML file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-padelpy2.wrapper">
+<dt class="sig sig-object py" id="padelpy2.wrapper.padeldescriptor">
+<span class="sig-prename descclassname"><span class="pre">padelpy2.wrapper.</span></span><span class="sig-name descname"><span class="pre">padeldescriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxruntime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitingjobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_2d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descriptortypes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detectaromaticity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mol_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fingerprints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxcpdperfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removesalt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retain3d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retainorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardizenitro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardizetautomers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tautomerlist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usefilenameasmolname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tempfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#padelpy2.wrapper.padeldescriptor" title="Link to this definition"></a></dt>
+<dd><p>Execute PaDEL-Descriptor with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxruntime</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum running time per molecule (in milliseconds). Use -1 for
+unlimited. Default is -1.</p></li>
+<li><p><strong>waitingjobs</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of jobs to store in queue for worker threads to process.
+Use -1 to set it to 50*Max threads. Default is -1.</p></li>
+<li><p><strong>threads</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of threads to use. Use -1 to use as many threads as the
+number of CPU cores. Default is -1.</p></li>
+<li><p><strong>d_2d</strong> (<em>bool</em><em>, </em><em>optional</em>) – Calculate 1D and 2D descriptors. Default is False.</p></li>
+<li><p><strong>d_3d</strong> (<em>bool</em><em>, </em><em>optional</em>) – Calculate 3D descriptors. Default is False.</p></li>
+<li><p><strong>config</strong> (<em>PathLike</em><em>, </em><em>optional</em>) – Configuration file. Default is None.</p></li>
+<li><p><strong>convert3d</strong> (<em>bool</em><em>, </em><em>optional</em>) – Convert molecule to 3D. Default is False.</p></li>
+<li><p><strong>descriptortypes</strong> (<em>PathLike</em><em>, </em><em>optional</em>) – Descriptor types file. Default is None.</p></li>
+<li><p><strong>detectaromaticity</strong> (<em>bool</em><em>, </em><em>optional</em>) – Remove existing aromaticity information and automatically detect
+aromaticity in the molecule before calculation of descriptors. Default
+is False.</p></li>
+<li><p><strong>mol_dir</strong> (<em>PathLike</em><em>, </em><em>optional</em>) – Set directory containing structural files, or a path to a file. Default
+is None.</p></li>
+<li><p><strong>d_file</strong> (<em>PathLike</em><em>, </em><em>optional</em>) – Set file to save calculated descriptors. Default is None.</p></li>
+<li><p><strong>fingerprints</strong> (<em>bool</em><em>, </em><em>optional</em>) – Calculate fingerprints. Default is False.</p></li>
+<li><p><strong>log</strong> (<em>bool</em><em>, </em><em>optional</em>) – Create a log file. Name of log file is the name of the descriptors file
+with a .log extension. Default is False.</p></li>
+<li><p><strong>maxcpdperfile</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of compounds to be stored in each descriptor file. Use 0
+for unlimited. Default is 0.</p></li>
+<li><p><strong>removesalt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Remove salt from molecule. Default is False.</p></li>
+<li><p><strong>retain3d</strong> (<em>bool</em><em>, </em><em>optional</em>) – Retain 3D coordinates when standardizing structure. However, this may
+prevent some structures from being standardized. Default is False.</p></li>
+<li><p><strong>retainorder</strong> (<em>bool</em><em>, </em><em>optional</em>) – Retain order of molecules in structural files for descriptor file. This
+may lead to large memory use if descriptor calculations are stuck at
+one molecule as the others will not be written to file and cleared from
+memory. Default is True.</p></li>
+<li><p><strong>standardizenitro</strong> (<em>bool</em><em>, </em><em>optional</em>) – Standardize nitro groups to N(:O):O. Default is False.</p></li>
+<li><p><strong>standardizetautomers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Standardize tautomers. Default is False.</p></li>
+<li><p><strong>tautomerlist</strong> (<em>PathLike</em><em>, </em><em>optional</em>) – SMIRKS tautomers file. Default is None.</p></li>
+<li><p><strong>usefilenameasmolname</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use filename (minus the extension) as molecule name. Default is False.</p></li>
+<li><p><strong>sp_timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – Timeout for subprocess execution in seconds. Default is None (no
+timeout).</p></li>
+<li><p><strong>headless</strong> (<em>bool</em><em>, </em><em>optional</em>) – Run PaDEL-Descriptor in headless mode. Default is True.</p></li>
+<li><p><strong>use_tempfile</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use a temporary file for output if <cite>d_file</cite> is not specified. Default
+is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The path to the descriptors file generated by PaDEL-Descriptor, or None
+if no file is generated.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[PathLike, None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="padelpy2 documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Travis Kessler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
