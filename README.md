@@ -44,6 +44,7 @@ pip install .
 - Python 3.7–3.11
 - [RDKit](https://www.rdkit.org/) (install via conda or pip; see note above)
 - pandas
+- **Java Runtime Environment (JRE) 6 or higher** must be installed and available on your system PATH. PaDEL-Descriptor is a Java application and will not run without Java. You can download Java [Oracle](https://www.oracle.com/java/technologies/downloads/).
 
 ---
 
