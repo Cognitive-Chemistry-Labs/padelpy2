@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           conda activate padelpy2 || true
-          pip install sphinx sphinxcontrib-napoleon
+          pip install sphinx sphinxcontrib-napoleon sphinx_rtd_theme
 
       - name : Install PaDELPy2
         run: |
