@@ -50,7 +50,7 @@ pip install .
 	<sup>\*If installing RDKit from pip, only Python 3.9–3.11 are supported. For Python 3.12+ use conda or another supported method.</sup>
 - [RDKit](https://www.rdkit.org/) (install via conda or pip; see note above)
 - pandas
-- **Java Runtime Environment (JRE) 6 or higher** must be installed and available on your system PATH. PaDEL-Descriptor is a Java application and will not run without Java. You can download Java [Oracle](https://www.oracle.com/java/technologies/downloads/).
+- **Java Runtime Environment (JRE) 6 or higher** must be installed and available on your system PATH. PaDEL-Descriptor is a Java application and will not run without Java. You can download Java from [Oracle](https://www.oracle.com/java/technologies/downloads/).
 
 ---
 
