@@ -30,6 +30,11 @@ jobs:
           conda activate padelpy2 || true
           pip install sphinx sphinxcontrib-napoleon
 
+      - name : Install PaDELPy2
+        run: |
+          conda activate padelpy2 || true
+          pip install .
+
       - name: Build documentation
         run: |
           cd docs
