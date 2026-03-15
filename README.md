@@ -7,7 +7,8 @@
 
 **padelpy2** is a Python wrapper for the [PaDEL-Descriptor](http://www.yapcwsoft.com/dd/padeldescriptor/) software, enabling fast and flexible calculation of molecular descriptors and fingerprints directly from Python.
 
----
+📚 **Documentation:** For full API details and usage examples, see the [padelpy2 documentation](https://cognitive-chemistry-labs.github.io/padelpy2/).
+
 
 ## Features
 
