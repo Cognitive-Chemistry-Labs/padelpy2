@@ -12,7 +12,7 @@
 
 ## Features
 
-- Compute 1D, 2D, and 3D molecular descriptors and fingerprints using PaDEL-Descriptor
+- Compute 2D and 3D molecular descriptors and fingerprints using PaDEL-Descriptor
 - Simple, object-oriented API for descriptor/fingerprint selection and calculation
 - Native support for RDKit molecules
 - Highly configurable (multithreading, 3D conversion, custom descriptor sets, etc.)
