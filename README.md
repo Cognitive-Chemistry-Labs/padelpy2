@@ -135,7 +135,7 @@ results = calc(mols)
 - Returns: pandas DataFrame
 
 ### Descriptor and Fingerprint Sets
-- `descriptors`: All available descriptors (1D, 2D, 3D)
+- `descriptors`: All available descriptors (2D and 3D)
 - `descriptors_2d`: Only 2D descriptors
 - `descriptors_3d`: Only 3D descriptors
 - `fingerprints`: All available fingerprints
