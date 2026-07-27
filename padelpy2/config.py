@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from os import PathLike
 
+__all__ = ["PaDELConfig"]
+
 
 @dataclass
 class PaDELConfig:

@@ -1,0 +1,32 @@
+{
+  "smiles": [
+    "CCO",
+    "c1ccccc1",
+    "CC(=O)O"
+  ],
+  "benzene_row_index": 1,
+  "embed_seed": 12648430,
+  "padel_threads": 1,
+  "abs_tol": 1e-06,
+  "rel_tol": 1e-06,
+  "stock_jar_relpath": "padelpy2/PaDEL-Descriptor/PaDEL-Descriptor.jar",
+  "stock_jar_sha256": "f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133",
+  "shapes": {
+    "subset_2d": [
+      3,
+      7
+    ],
+    "descriptors_2d": [
+      3,
+      1444
+    ],
+    "maccs": [
+      3,
+      166
+    ],
+    "descriptors_3d": [
+      3,
+      431
+    ]
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "date_utc": "2026-07-27T02:35:12.311406+00:00",
+    "smiles": [
+      "CCO",
+      "c1ccccc1",
+      "CC(=O)O"
+    ],
+    "abs_tol": 1e-06,
+    "rel_tol": 1e-06,
+    "python": "3.11.8 | packaged by conda-forge | (main, Feb 16 2024, 20:49:36) [Clang 16.0.6 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "padelpy2_version": "0.1.0",
+    "peer_epadel_wrapper_version": "1.1.0",
+    "rdkit_version": "2026.03.4",
+    "java_home_hint": "/opt/anaconda3/envs/descriptors/bin/python3.11",
+    "stock_jar_path": "/Users/traviskessler/GitHub-Cursor/padelpy2/padelpy2/PaDEL-Descriptor/PaDEL-Descriptor.jar",
+    "stock_jar_sha256": "f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133",
+    "peer_engine_note": "peer ePaDEL bundle (anonymized)",
+    "n_peer_descriptor_classes": 63,
+    "n_padelpy2_descriptors_2d_classes": 55
+  },
+  "comparisons": [
+    {
+      "label": "subset_ALOGP_Crippen_Weight",
+      "n_rows": 3,
+      "n_cols_padelpy2": 7,
+      "n_cols_peer": 7,
+      "n_shared_cols": 7,
+      "n_only_padelpy2": 0,
+      "n_only_peer": 0,
+      "only_padelpy2_sample": [],
+      "only_peer_sample": [],
+      "cells_exact": 21,
+      "cells_close": 0,
+      "cells_mismatch": 0,
+      "cells_nan_both": 0,
+      "cells_nan_xor": 0,
+      "mismatch_sample": [],
+      "shared_all_close": true,
+      "column_sets_equal": true
+    },
+    {
+      "label": "MACCS",
+      "n_rows": 3,
+      "n_cols_padelpy2": 166,
+      "n_cols_peer": 166,
+      "n_shared_cols": 166,
+      "n_only_padelpy2": 0,
+      "n_only_peer": 0,
+      "only_padelpy2_sample": [],
+      "only_peer_sample": [],
+      "cells_exact": 498,
+      "cells_close": 0,
+      "cells_mismatch": 0,
+      "cells_nan_both": 0,
+      "cells_nan_xor": 0,
+      "mismatch_sample": [],
+      "shared_all_close": true,
+      "column_sets_equal": true
+    },
+    {
+      "label": "descriptors_2d_catalogs",
+      "n_rows": 3,
+      "n_cols_padelpy2": 1444,
+      "n_cols_peer": 1444,
+      "n_shared_cols": 1444,
+      "n_only_padelpy2": 0,
+      "n_only_peer": 0,
+      "only_padelpy2_sample": [],
+      "only_peer_sample": [],
+      "cells_exact": 4098,
+      "cells_close": 10,
+      "cells_mismatch": 223,
+      "cells_nan_both": 1,
+      "cells_nan_xor": 0,
+      "mismatch_sample": [
+        {
+          "row": 1,
+          "col": "EE_DzZ",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dze",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dzi",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dzm",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dzp",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dzs",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "EE_Dzv",
+          "padelpy2": 6.845495371866151,
+          "peer": 6.009012618906293,
+          "abs_diff": 0.8364827529598582,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Beta",
+          "padelpy2": 7.5,
+          "peer": 9.0,
+          "abs_diff": 1.5,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_BetaP",
+          "padelpy2": 1.25,
+          "peer": 1.5,
+          "abs_diff": 0.25,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_BetaP_ns",
+          "padelpy2": 0.75,
+          "peer": 1.0,
+          "abs_diff": 0.25,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Beta_ns",
+          "padelpy2": 4.5,
+          "peer": 6.0,
+          "abs_diff": 1.5,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Eta",
+          "padelpy2": 2.0,
+          "peer": 1.6667,
+          "abs_diff": 0.33329999999999993,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_EtaP",
+          "padelpy2": 0.33333,
+          "peer": 0.27778,
+          "abs_diff": 0.05554999999999999,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_EtaP_F",
+          "padelpy2": 0.5,
+          "peer": 0.55555,
+          "abs_diff": 0.05554999999999999,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_EtaP_F_L",
+          "padelpy2": 0.3,
+          "peer": 0.33333,
+          "abs_diff": 0.033330000000000026,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_EtaP_L",
+          "padelpy2": 0.2,
+          "peer": 0.16667,
+          "abs_diff": 0.03333,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Eta_F",
+          "padelpy2": 3.0,
+          "peer": 3.3333,
+          "abs_diff": 0.33329999999999993,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Eta_F_L",
+          "padelpy2": 1.8,
+          "peer": 1.99998,
+          "abs_diff": 0.19998000000000005,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_Eta_L",
+          "padelpy2": 1.2,
+          "peer": 1.00002,
+          "abs_diff": 0.19998000000000005,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_dBeta",
+          "padelpy2": 1.5,
+          "peer": 3.0,
+          "abs_diff": 1.5,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "ETA_dBetaP",
+          "padelpy2": 0.25,
+          "peer": 0.5,
+          "abs_diff": 0.25,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "LipoaffinityIndex",
+          "padelpy2": 3.3600000000000003,
+          "peer": 3.588,
+          "abs_diff": 0.22799999999999976,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "R_TpiPCTPC",
+          "padelpy2": 2.9166666666666665,
+          "peer": 3.4635416666666665,
+          "abs_diff": 0.546875,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "SHaaCH",
+          "padelpy2": 0.0,
+          "peer": 2.7,
+          "abs_diff": 2.7,
+          "kind": "value"
+        },
+        {
+          "row": 1,
+          "col": "SHdsCH",
+          "padelpy2": 2.7,
+          "peer": 0.0,
+          "abs_diff": 2.7,
+          "kind": "value"
+        }
+      ],
+      "shared_all_close": false,
+      "column_sets_equal": true
+    }
+  ]
+}

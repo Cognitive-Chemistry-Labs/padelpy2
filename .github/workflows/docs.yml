@@ -5,9 +5,14 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/docs.yml
-      - docs/**
-      - padelpy2/**
+      - ".github/workflows/docs.yml"
+      - "docs/**"
+      - "padelpy2/**"
+      - "pyproject.toml"
+      - "environment.yml"
+
+permissions:
+  contents: write
 
 jobs:
   build-deploy:
@@ -16,30 +21,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          python-version: '3.11'
+          distribution: temurin
+          java-version: "17"
 
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v3
         with:
-          activate-environment: padelpy2
+          activate-environment: padelpy2-docs
           environment-file: environment.yml
           auto-activate-base: false
-        continue-on-error: true
 
-      - name: Install dependencies
+      - name: Install package and docs extras
+        shell: bash -l {0}
         run: |
-          conda activate padelpy2 || true
-          pip install sphinx sphinxcontrib-napoleon sphinx_rtd_theme
-
-      - name : Install PaDELPy2
-        run: |
-          conda activate padelpy2 || true
-          pip install .[rdkit]
+          pip install -e ".[docs,rdkit]"
 
       - name: Build documentation
+        shell: bash -l {0}
         run: |
           cd docs
           make html
@@ -47,7 +48,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build/html
           publish_branch: gh-pages
           force_orphan: true

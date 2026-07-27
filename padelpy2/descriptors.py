@@ -1,12 +1,14 @@
 from csv import DictReader
 from os.path import abspath, dirname, join
 
+__all__ = [
+    "Descriptor",
+    "descriptors",
+    "descriptors_2d",
+    "descriptors_3d",
+]
 
-DESC_PATH = join(
-    dirname(abspath(__file__)),
-    "PaDEL-Descriptor",
-    "descriptors.csv"
-)
+DESC_PATH = join(dirname(abspath(__file__)), "PaDEL-Descriptor", "descriptors.csv")
 
 
 class Descriptor:
@@ -36,7 +38,7 @@ class Descriptor:
     def __init__(self, desc_class: str, is_3d: bool):
 
         self.desc_class = desc_class
-        with open(DESC_PATH, "r") as descfile:
+        with open(DESC_PATH) as descfile:
             reader = DictReader(descfile)
             rows = [r for r in reader if r["class"] == self.desc_class]
         self.descriptors = [r["descriptor"] for r in rows]
@@ -47,7 +49,7 @@ class Descriptor:
 AcidicGroupCount = Descriptor("AcidicGroupCount", False)
 ALOGP = Descriptor("ALOGP", False)
 AminoAcidCount = Descriptor("AminoAcidCount", False)
-APol  = Descriptor("APol", False)
+APol = Descriptor("APol", False)
 AromaticAtomsCount = Descriptor("AromaticAtomsCount", False)
 AromaticBondsCount = Descriptor("AromaticBondsCount", False)
 AtomCount = Descriptor("AtomCount", False)

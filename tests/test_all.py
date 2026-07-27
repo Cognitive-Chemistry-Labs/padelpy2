@@ -1,5 +1,10 @@
-from padelpy2 import Calculator, descriptors, descriptors_2d, descriptors_3d, \
-    fingerprints
+from padelpy2 import (
+    Calculator,
+    descriptors,
+    descriptors_2d,
+    descriptors_3d,
+    fingerprints,
+)
 
 
 def test_2d_descriptor_generation(test_molecules):

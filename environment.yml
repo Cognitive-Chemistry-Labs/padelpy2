@@ -1,9 +1,11 @@
 name: padelpy2-docs
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - python=3.11
   - pip
   - pip:
-      - sphinx
-      - sphinxcontrib-napoleon
+      - sphinx>=7
+      - sphinx-rtd-theme>=2
+      - sphinxcontrib-napoleon>=0.7

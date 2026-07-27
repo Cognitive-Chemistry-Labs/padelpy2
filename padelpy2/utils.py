@@ -1,7 +1,8 @@
+from collections.abc import Iterable, Sequence
 from os import PathLike, remove
 from subprocess import PIPE, Popen, TimeoutExpired
 from tempfile import NamedTemporaryFile
-from typing import Iterable, List, Tuple, Union
+from typing import Union
 from xml.etree import ElementTree as ET
 
 from rdkit import Chem
@@ -10,15 +11,20 @@ from rdkit.Chem import Mol
 from padelpy2.descriptors import Descriptor
 from padelpy2.fingerprints import Fingerprint
 
+# Semi-internal helpers for Calculator/wrapper; not part of the frozen public API.
+__all__: list[str] = []
 
-def popen_timeout(command: str, timeout: Union[int, None]) -> Tuple[str, str]:
+
+def popen_timeout(
+    argv: Sequence[str], timeout: Union[int, None]
+) -> tuple[bytes, bytes]:
     """
-    Run a subprocess command with an optional timeout.
+    Run a subprocess with an argument list and an optional timeout.
 
     Parameters
     ----------
-    command : str
-        The command to be executed.
+    argv : Sequence[str]
+        Argument vector passed directly to ``Popen`` (no shell / string split).
     timeout : Union[int, None]
         The maximum time (in seconds) to wait for the command to complete. If
         None, there is no timeout.
@@ -26,22 +32,22 @@ def popen_timeout(command: str, timeout: Union[int, None]) -> Tuple[str, str]:
     Returns
     -------
     tuple
-        A tuple containing the stdout and stderr of the command.
+        A tuple containing the stdout and stderr of the command as bytes.
     """
 
-    process = Popen(command.split(), stdout=PIPE, stderr=PIPE)
+    process = Popen(list(argv), stdout=PIPE, stderr=PIPE)
     try:
         return process.communicate(timeout=timeout)
-    except TimeoutExpired:
+    except TimeoutExpired as err:
         process.kill()
         raise TimeoutError(
-            f"Command '{command}' timed out after {timeout} seconds."
-        )
+            f"Command {list(argv)!r} timed out after {timeout} seconds."
+        ) from err
 
 
 def create_descriptortypes_xml(
-        descriptors: Iterable[Union[Descriptor, Fingerprint]]
-     ) -> str:
+    descriptors: Iterable[Union[Descriptor, Fingerprint]],
+) -> str:
     """
     Create an XML string for descriptor types.
 
@@ -93,8 +99,8 @@ def create_descriptortypes_xml(
 
 
 def count_descriptor_types(
-        descriptors: Iterable[Union[Descriptor, Fingerprint]]
-     ) -> Tuple[int, int, int]:
+    descriptors: Iterable[Union[Descriptor, Fingerprint]],
+) -> tuple[int, int, int]:
     """
     Count the number of 2D descriptors, 3D descriptors, and fingerprints.
 
@@ -161,7 +167,7 @@ def remove_files(*paths: PathLike) -> None:
         remove(path)
 
 
-def check_for_invalid_mols(mols: List[Mol], check_3d: bool) -> None:
+def check_for_invalid_mols(mols: list[Mol], check_3d: bool) -> None:
     """
     Check for invalid molecules in terms of atom count and 3D conformers.
 
@@ -186,12 +192,11 @@ def check_for_invalid_mols(mols: List[Mol], check_3d: bool) -> None:
         if not (len(confs) > 0 and confs[-1].Is3D()):
             if check_3d:
                 raise ValueError(
-                    "Cannot calculate 3D descriptors for a molecule without "
-                    "conformers."
+                    "Cannot calculate 3D descriptors for a molecule without conformers."
                 )
 
 
-def write_mols_to_tempfile(mols: List[Mol]) -> str:
+def write_mols_to_tempfile(mols: list[Mol]) -> str:
     """
     Write a list of molecule objects to a temporary SDF file.
 
