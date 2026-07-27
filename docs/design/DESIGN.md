@@ -326,8 +326,8 @@ def summarize_descriptor_frame(df: pd.DataFrame) -> DescriptorQCReport:
 | Dependency | Role | Notes |
 |------------|------|-------|
 | **Java JRE 8+** (system) | Runtime for stock PaDEL | Documented; CI installs Temurin (no auto-JRE claim) |
-| **pandas** | DataFrame results | Hard dependency |
-| **RDKit** | `Mol` I/O for Calculator | Conda-first; optional `[rdkit]` extra where wheels exist |
+| **pandas** | DataFrame results (`Calculator`, `compat`, `qc`) | Optional `[pandas]`; bundled in `[calc]` |
+| **RDKit** | `Mol` I/O for Calculator | Conda-first; optional `[rdkit]`; bundled in `[calc]` |
 | **pytest / ruff / coverage** | Dev quality | `[dev]` extra |
 | **Sphinx** | Docs | `[docs]` extra; GitHub Pages today |
 

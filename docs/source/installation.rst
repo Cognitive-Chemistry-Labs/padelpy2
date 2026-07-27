@@ -7,33 +7,44 @@ You need a system Java runtime in addition to Python dependencies.
 Requirements
 ------------
 
-* Python 3.9–3.13 (see note below for the optional PyPI RDKit wheel)
+* Python 3.9–3.13 (RDKit wheels for oracle-tested versions prefer 3.10+)
 * **Java Runtime Environment (JRE) 8 or higher** on your ``PATH``
   (``java -version`` should succeed). CI uses Temurin 17.
-* **pandas** (installed with the package)
-* **RDKit** for the ``Calculator`` API (conda recommended)
+
+Optional extras
+---------------
+
+* **None (default)** — low-level ``padeldescriptor`` CLI wrapper (stdlib + Java)
+* ``[pandas]`` — DataFrame helpers (``qc``; used by Calculator)
+* ``[rdkit]`` — RDKit molecule I/O for Calculator / ``compat``
+* ``[calc]`` — ``pandas`` + ``rdkit`` (recommended for ``Calculator``)
 
 Install the package
 -------------------
 
-From PyPI::
+Minimal (``padeldescriptor`` only)::
 
    pip install padelpy2
 
+Calculator / DataFrame workflows::
+
+   pip install "padelpy2[calc]"
+
 From a source checkout::
 
-   pip install -e .
+   pip install -e ".[calc]"
 
 RDKit
 -----
 
-Conda (recommended)::
+Conda (recommended) plus the pandas extra::
 
    conda install -c conda-forge rdkit
+   pip install "padelpy2[pandas]"
 
-Optional PyPI extra (current ``rdkit`` wheels; prefer 3.10+)::
+Or the combined PyPI extra (current ``rdkit`` wheels; prefer 3.10+)::
 
-   pip install "padelpy2[rdkit]"
+   pip install "padelpy2[calc]"
 
 Stock-JAR oracle fixtures were generated with RDKit 2026.03.x. Prefer
 conda-forge RDKit when possible.
@@ -50,10 +61,11 @@ Development extras
 
 ::
 
-   pip install -e ".[dev,docs]"
+   pip install -e ".[dev,docs,calc]"
 
 * ``[dev]`` — pytest, coverage, ruff
 * ``[docs]`` — Sphinx and the Read the Docs theme
+* ``[calc]`` — pandas + RDKit for API autodoc and examples
 
 Build this documentation from a checkout::
 

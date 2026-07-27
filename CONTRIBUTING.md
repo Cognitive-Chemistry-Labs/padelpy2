@@ -7,21 +7,21 @@ setup and the checks expected before opening a pull request.
 
 - Python 3.9–3.13
 - **Java Runtime Environment (JRE) 8+** on your `PATH` (`java -version`)
-- **RDKit** (conda-forge recommended) for `Calculator` and most tests
-- pandas (installed with the package)
+- For `Calculator` / most tests: pandas + RDKit (`padelpy2[calc]`; conda-forge RDKit recommended)
 
 ## Development install
 
 ```bash
 git clone https://github.com/Cognitive-Chemistry-Labs/padelpy2.git
 cd padelpy2
-pip install -e ".[dev,docs]"
+pip install -e ".[dev,docs,calc]"
 ```
 
-Install RDKit via conda if you do not already have it:
+Or conda-forge RDKit plus the pandas extra:
 
 ```bash
 conda install -c conda-forge rdkit
+pip install -e ".[dev,docs,pandas]"
 ```
 
 ## Checks

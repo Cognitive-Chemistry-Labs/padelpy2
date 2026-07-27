@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 import numpy as np
-import pandas as pd
-from rdkit.Chem import Mol
 
+from padelpy2._extras import require_pandas, require_rdkit
 from padelpy2.config import PaDELConfig
 from padelpy2.descriptors import Descriptor
 from padelpy2.fingerprints import Fingerprint
@@ -19,6 +18,14 @@ from padelpy2.utils import (
     write_xml_string_to_tempfile,
 )
 from padelpy2.wrapper import padeldescriptor
+
+if TYPE_CHECKING:
+    import pandas as pd
+    from rdkit.Chem import Mol
+
+# Fail fast with an actionable message when optional deps are missing.
+pd = require_pandas()
+require_rdkit()
 
 __all__ = ["Calculator"]
 

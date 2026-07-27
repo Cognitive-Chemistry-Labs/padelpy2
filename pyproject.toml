@@ -18,13 +18,17 @@ authors = [
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
-dependencies = [
-    "pandas"
-]
+dependencies = []
 
 [project.optional-dependencies]
+pandas = [
+    "pandas",
+]
 rdkit = [
     "rdkit>=2024.3.1",
+]
+calc = [
+    "padelpy2[pandas,rdkit]",
 ]
 dev = [
     "pytest>=8",

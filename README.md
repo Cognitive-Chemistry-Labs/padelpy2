@@ -14,7 +14,8 @@
 | Need | Prefer |
 |------|--------|
 | Minimal env; SMILES/SDF → dicts; no RDKit/pandas | [padelpy](https://github.com/ecrl/padelpy) |
-| Stock Yap JAR, `padeldescriptor` continuity, RDKit → DataFrame | **padelpy2** (this package) |
+| Stock Yap JAR; file/`padeldescriptor` only (no RDKit/pandas) | **padelpy2** (default install) |
+| Stock Yap JAR + RDKit → DataFrame `Calculator` | **padelpy2** with `[calc]` |
 | General descriptors without PaDEL identity | mordredcommunity or RDKit |
 
 See the [when-to-use guide](https://cognitive-chemistry-labs.github.io/padelpy2/when_to_use.html) for stock-JAR fidelity notes.
@@ -32,23 +33,25 @@ See the [when-to-use guide](https://cognitive-chemistry-labs.github.io/padelpy2/
 
 ## Installation
 
-### From PyPI
+### Minimal (low-level `padeldescriptor`)
 
 ```bash
 pip install padelpy2
 ```
 
-### With RDKit
+Requires Python 3.9+ and a system **Java JRE 8+** on `PATH`. No pandas or RDKit.
 
-Install RDKit alongside padelpy2 (recommended: conda-forge). The optional extra pulls a current PyPI `rdkit` wheel:
+### Calculator / DataFrame workflows
 
 ```bash
-# conda-forge (preferred)
-conda install -c conda-forge rdkit
-pip install padelpy2
+pip install "padelpy2[calc]"   # pandas + RDKit
+```
 
-# or PyPI
-pip install padelpy2[rdkit]
+Or conda-forge RDKit plus the pandas extra:
+
+```bash
+conda install -c conda-forge rdkit
+pip install "padelpy2[pandas]"
 ```
 
 Stock-JAR oracle tests expect RDKit **2026.03.x** (or regenerating fixtures after an intentional RDKit bump).
@@ -58,15 +61,13 @@ Stock-JAR oracle tests expect RDKit **2026.03.x** (or regenerating fixtures afte
 ```bash
 git clone https://github.com/cognitive-chemistry-labs/padelpy2
 cd padelpy2
-pip install .
+pip install -e ".[calc]"   # or bare pip install -e . for padeldescriptor only
 ```
 
 **Requirements:**
-- Python 3.9–3.13  
-	<sup>\*If installing RDKit from pip, only Python 3.9–3.11 are supported. For Python 3.12+ use conda or another supported method.</sup>
-- [RDKit](https://www.rdkit.org/) (install via conda or pip; see note above)
-- pandas
-- **Java Runtime Environment (JRE) 8 or higher** must be installed and available on your system PATH. PaDEL-Descriptor is a Java application and will not run without Java. padelpy2 does not auto-download a JRE.
+- Python 3.9–3.13
+- **Java Runtime Environment (JRE) 8 or higher** on `PATH` (padelpy2 does not auto-download a JRE)
+- Optional: pandas + RDKit for `Calculator` / `compat` / `qc` (`padelpy2[calc]`)
 
 ---
 
@@ -214,5 +215,6 @@ See the function docstring in `padelpy2/wrapper.py` for a full list of options a
 
 ## Examples
 
-- Tutorial notebook: [`examples/example.ipynb`](examples/example.ipynb) (install notes, MWE, aromatic config, custom subset)
+- RDKit `Calculator` tutorial: [`examples/example.ipynb`](examples/example.ipynb)
+- Low-level `padeldescriptor` (no RDKit/pandas): [`examples/padeldescriptor_lowlevel.ipynb`](examples/padeldescriptor_lowlevel.ipynb)
 - Docs: [Examples](https://cognitive-chemistry-labs.github.io/padelpy2/examples.html)

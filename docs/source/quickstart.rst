@@ -2,8 +2,9 @@ Quickstart
 ==========
 
 This page shows a minimal path from RDKit molecules to a ``pandas`` DataFrame
-using the stock PaDEL JAR. See :doc:`installation` for Java and RDKit setup,
-and :doc:`when_to_use` for how padelpy2 relates to padelpy.
+using the stock PaDEL JAR. Install with ``pip install "padelpy2[calc]"``.
+See :doc:`installation` for Java and RDKit setup, :doc:`examples` for a
+no-RDKit ``padeldescriptor`` notebook, and :doc:`when_to_use` for package choice.
 
 Minimal example
 ---------------

@@ -37,7 +37,7 @@ jobs:
       - name: Install package and docs extras
         shell: bash -l {0}
         run: |
-          pip install -e ".[docs,rdkit]"
+          pip install -e ".[docs,calc]"
 
       - name: Build documentation
         shell: bash -l {0}

@@ -24,9 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refreshed `examples/example.ipynb` tutorial; Sphinx examples page
 - `CITATION.cff` (engine preferred citation: Yap 2011)
 - Coverage-gap tests (`tests/test_coverage_gaps.py`)
+- Optional dependency extras: `[pandas]`, `[rdkit]`, and `[calc]` (pandas+rdkit); low-level notebook `examples/padeldescriptor_lowlevel.ipynb`
 
 ### Changed
 
+- **Breaking (install):** `pandas` is no longer a hard dependency. Use `pip install "padelpy2[calc]"` for Calculator / DataFrame APIs. Default install is `padeldescriptor` + catalogs only.
+- Lazy top-level `Calculator` import so `import padelpy2` does not require pandas/RDKit
 - Public docs and README position padelpy vs padelpy2 only (third-party PaDEL wrapper recommendations removed; peer ePaDEL notes remain in design/parity archive)
 - README positioning for stock Yap JAR vs padelpy; fixed `Weight` example
 - Documentation version aligned with package metadata (`0.1.0`)

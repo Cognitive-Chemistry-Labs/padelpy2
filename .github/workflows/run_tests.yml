@@ -70,10 +70,9 @@ jobs:
       - name: Install package and test extras
         run: |
           python -m pip install --upgrade pip
-          # Oracles were generated with RDKit 2026.03.x (modern `rdkit` wheels).
-          # Do not use the legacy `rdkit-pypi==2022.9.5` extra here — SDF prep
-          # differs and drifts topology/3D oracle columns.
-          pip install -e ".[dev]"
+          # Calculator/oracle tests need the calc extra (pandas + RDKit).
+          # Pin RDKit 2026.3.4 to match stock-JAR oracle fixtures.
+          pip install -e ".[dev,calc]"
           pip install "rdkit==2026.3.4"
 
       - name: Run tests with coverage

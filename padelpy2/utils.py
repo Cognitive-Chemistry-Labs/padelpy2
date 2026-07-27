@@ -1,23 +1,24 @@
+from __future__ import annotations
+
 from collections.abc import Iterable, Sequence
 from os import PathLike, remove
 from subprocess import PIPE, Popen, TimeoutExpired
 from tempfile import NamedTemporaryFile
-from typing import Union
+from typing import TYPE_CHECKING
 from xml.etree import ElementTree as ET
 
-from rdkit import Chem
-from rdkit.Chem import Mol
-
+from padelpy2._extras import require_rdkit
 from padelpy2.descriptors import Descriptor
 from padelpy2.fingerprints import Fingerprint
+
+if TYPE_CHECKING:
+    from rdkit.Chem import Mol
 
 # Semi-internal helpers for Calculator/wrapper; not part of the frozen public API.
 __all__: list[str] = []
 
 
-def popen_timeout(
-    argv: Sequence[str], timeout: Union[int, None]
-) -> tuple[bytes, bytes]:
+def popen_timeout(argv: Sequence[str], timeout: int | None) -> tuple[bytes, bytes]:
     """
     Run a subprocess with an argument list and an optional timeout.
 
@@ -46,7 +47,7 @@ def popen_timeout(
 
 
 def create_descriptortypes_xml(
-    descriptors: Iterable[Union[Descriptor, Fingerprint]],
+    descriptors: Iterable[Descriptor | Fingerprint],
 ) -> str:
     """
     Create an XML string for descriptor types.
@@ -99,7 +100,7 @@ def create_descriptortypes_xml(
 
 
 def count_descriptor_types(
-    descriptors: Iterable[Union[Descriptor, Fingerprint]],
+    descriptors: Iterable[Descriptor | Fingerprint],
 ) -> tuple[int, int, int]:
     """
     Count the number of 2D descriptors, 3D descriptors, and fingerprints.
@@ -213,6 +214,7 @@ def write_mols_to_tempfile(mols: list[Mol]) -> str:
         molecules.
     """
 
+    Chem = require_rdkit()
     with NamedTemporaryFile("w", delete=False, suffix=".sdf") as sdffile:
         sdf_file_name = sdffile.name
     writer = Chem.SDWriter(sdf_file_name)

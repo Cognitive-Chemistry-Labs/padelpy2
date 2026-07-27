@@ -3,9 +3,16 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 import numpy as np
-import pandas as pd
+
+from padelpy2._extras import require_pandas
+
+if TYPE_CHECKING:
+    import pandas as pd
+
+pd = require_pandas()
 
 __all__ = ["DescriptorQCReport", "summarize_descriptor_frame"]
 

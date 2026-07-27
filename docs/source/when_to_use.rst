@@ -17,9 +17,10 @@ Decision table
      - Prefer
    * - Minimal environment; SMILES/SDF → dicts; no RDKit or pandas
      - **padelpy**
-   * - Stock Yap JAR; padelpy-compatible ``padeldescriptor``; RDKit → DataFrame;
-       oracle-tested columns
-     - **padelpy2**
+   * - Stock Yap JAR; file-based ``padeldescriptor`` only (no RDKit/pandas)
+     - **padelpy2** (default install)
+   * - Stock Yap JAR; RDKit → DataFrame; oracle-tested columns
+     - **padelpy2** with ``[calc]``
    * - General descriptors without PaDEL identity
      - **mordredcommunity** / RDKit
 

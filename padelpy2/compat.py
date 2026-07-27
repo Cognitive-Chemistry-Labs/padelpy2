@@ -4,15 +4,21 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 from os import PathLike
+from typing import TYPE_CHECKING
 
-import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import AllChem, Mol
-
+from padelpy2._extras import require_pandas, require_rdkit
 from padelpy2.calculator import Calculator
 from padelpy2.config import PaDELConfig
 from padelpy2.descriptors import Descriptor, descriptors_2d
 from padelpy2.fingerprints import Fingerprint, fingerprints
+
+if TYPE_CHECKING:
+    import pandas as pd
+    from rdkit.Chem import Mol
+
+pd = require_pandas()
+Chem = require_rdkit()
+from rdkit.Chem import AllChem  # noqa: E402  — after require_rdkit()
 
 __all__ = ["from_smiles", "from_sdf", "from_mdl"]
 
