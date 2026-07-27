@@ -24,8 +24,7 @@ dependencies = [
 
 [project.optional-dependencies]
 rdkit = [
-    "rdkit-pypi==2022.9.5",
-    "numpy==1.26.4"
+    "rdkit>=2024.3.1",
 ]
 dev = [
     "pytest>=8",

@@ -38,15 +38,20 @@ See the [when-to-use guide](https://cognitive-chemistry-labs.github.io/padelpy2/
 pip install padelpy2
 ```
 
-### With RDKit (PyPI version)
+### With RDKit
 
-If you do not already have RDKit installed, you can install the PyPI build (version 2022.9.5) with:
+Install RDKit alongside padelpy2 (recommended: conda-forge). The optional extra pulls a current PyPI `rdkit` wheel:
 
 ```bash
+# conda-forge (preferred)
+conda install -c conda-forge rdkit
+pip install padelpy2
+
+# or PyPI
 pip install padelpy2[rdkit]
 ```
 
-> **Note:** The PyPI build of RDKit (`rdkit-pypi==2022.9.5`) is limited and may not support all features or platforms. For best compatibility and performance, it is **strongly recommended** to install RDKit via [conda](https://www.rdkit.org/docs/Install.html) or your preferred package manager.
+Stock-JAR oracle tests expect RDKit **2026.03.x** (or regenerating fixtures after an intentional RDKit bump).
 
 ### From Source
 

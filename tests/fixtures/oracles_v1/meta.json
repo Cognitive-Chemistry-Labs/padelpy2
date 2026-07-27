@@ -11,6 +11,7 @@
   "rel_tol": 1e-06,
   "stock_jar_relpath": "padelpy2/PaDEL-Descriptor/PaDEL-Descriptor.jar",
   "stock_jar_sha256": "f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133",
+  "rdkit_version": "2026.03.4",
   "shapes": {
     "subset_2d": [
       3,

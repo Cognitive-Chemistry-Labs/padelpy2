@@ -14,6 +14,7 @@ oracles.
 | JAR path | `padelpy2/PaDEL-Descriptor/PaDEL-Descriptor.jar` |
 | JAR sha256 | `f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133` |
 | padelpy2 version (generated) | `0.1.0` |
+| RDKit version (generated) | `2026.03.4` |
 | Kind | `regression` |
 
 ## Molecules (row order)
