@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 try:
     __version__ = distribution("padelpy2").version
 except PackageNotFoundError:
-    __version__ = "0.1.0"
+    __version__ = "0.2.0"
 
 __all__ = [
     "Calculator",

@@ -10,7 +10,7 @@ where = ["."]
 
 [project]
 name = "padelpy2"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Python wrapper for PaDEL-Descriptor"
 authors = [
     { name = "Travis Kessler", email = "travis@cognichem.com" }

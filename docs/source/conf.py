@@ -24,7 +24,7 @@ author = "Travis Kessler"
 try:
     release = pkg_version("padelpy2")
 except PackageNotFoundError:
-    release = "0.1.0"
+    release = "0.2.0"
 version = release
 
 # -- General configuration ---------------------------------------------------

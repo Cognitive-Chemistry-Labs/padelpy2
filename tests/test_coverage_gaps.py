@@ -34,7 +34,7 @@ def test_version_fallback_when_distribution_missing():
         side_effect=PackageNotFoundError("padelpy2"),
     ):
         reload(pkg)
-        assert pkg.__version__ == "0.1.0"
+        assert pkg.__version__ == "0.2.0"
     reload(pkg)
 
 

@@ -26,7 +26,7 @@ Full method notes and machine-readable JSON live in the repository under
 ``docs/design/benchmarks_g3/`` (see ``METHOD.md`` and ``RESULTS.md``).
 
 **Hardware / environment (snapshot):** macOS arm64; Python 3.11.8; RDKit
-2026.03.4; padelpy2 0.1.0; stock JAR sha256
+2026.03.4; padelpy2 0.2.0; stock JAR sha256
 ``f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133``;
 ``PaDELConfig(threads=1)``; ethanol × N; descriptor ``Weight``; chunk size 25.
 
