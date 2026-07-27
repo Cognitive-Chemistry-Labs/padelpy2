@@ -48,7 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        # RDKit 2026.3.4 (oracle pin) publishes wheels for 3.10+ on Linux.
+        python-version: ["3.10", "3.11"]
       fail-fast: false
 
     steps:

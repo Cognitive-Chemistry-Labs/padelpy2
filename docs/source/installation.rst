@@ -31,12 +31,12 @@ Conda (recommended)::
 
    conda install -c conda-forge rdkit
 
-Optional PyPI extra (limited platforms / older wheel)::
+Optional PyPI extra (current ``rdkit`` wheels; prefer 3.10+)::
 
    pip install "padelpy2[rdkit]"
 
-The ``[rdkit]`` extra pins a historical ``rdkit-pypi`` build and may not support
-all Python versions or platforms. Prefer conda-forge RDKit when possible.
+Stock-JAR oracle fixtures were generated with RDKit 2026.03.x. Prefer
+conda-forge RDKit when possible.
 
 Java notes
 ----------

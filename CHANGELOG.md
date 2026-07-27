@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation version aligned with package metadata (`0.1.0`)
 - `padeldescriptor` / `popen_timeout` use argument-list subprocess invocation (paths with spaces)
 - Coverage policy: aim ≥95% locally; CI fail-under **90%** (`tool.coverage.report.fail_under`)
+- Optional `[rdkit]` extra uses modern `rdkit` wheels; CI pins `rdkit==2026.3.4` on Python 3.10–3.11
 
 ### Fixed
 
