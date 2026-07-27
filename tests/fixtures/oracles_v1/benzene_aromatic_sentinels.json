@@ -1,0 +1,12 @@
+{
+  "smiles": "c1ccccc1",
+  "row_index": 1,
+  "columns": {
+    "naAromAtom": 0.0,
+    "nAromBond": 0.0,
+    "SpAbs_DzZ": 14.300789419709702,
+    "EE_DzZ": 6.845495371866151,
+    "VE1_DzZ": 0.0075885819082664,
+    "ETA_Beta": 7.5
+  }
+}

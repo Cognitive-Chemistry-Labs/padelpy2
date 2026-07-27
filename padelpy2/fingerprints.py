@@ -1,12 +1,12 @@
 from csv import DictReader
 from os.path import abspath, dirname, join
 
+__all__ = [
+    "Fingerprint",
+    "fingerprints",
+]
 
-FP_PATH = join(
-    dirname(abspath(__file__)),
-    "PaDEL-Descriptor",
-    "fingerprints.csv"
-)
+FP_PATH = join(dirname(abspath(__file__)), "PaDEL-Descriptor", "fingerprints.csv")
 
 
 class Fingerprint:
@@ -32,7 +32,7 @@ class Fingerprint:
     def __init__(self, fp_class: str):
 
         self.fp_class = fp_class
-        with open(FP_PATH, "r") as fpfile:
+        with open(FP_PATH) as fpfile:
             reader = DictReader(fpfile)
             rows = [r for r in reader if r["class"] == self.fp_class]
         self.n_bits = int(rows[0]["bits"])
@@ -64,5 +64,5 @@ fingerprints = [
     KlekotaRothFingerprinter,
     KlekotaRothFingerprintCount,
     AtomPairs2DFingerprinter,
-    AtomPairs2DFingerprintCount
+    AtomPairs2DFingerprintCount,
 ]

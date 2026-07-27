@@ -1,13 +1,10 @@
-from typing import List
-
 import pytest
 from rdkit import Chem
-from rdkit.Chem import rdDepictor
-from rdkit.Chem import rdDistGeom
+from rdkit.Chem import rdDepictor, rdDistGeom
 
 
 @pytest.fixture(scope="session")
-def test_molecules() -> List[str]:
+def test_molecules():
 
     smiles = [
         "CN=C=O",

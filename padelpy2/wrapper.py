@@ -6,40 +6,39 @@ from typing import Union
 
 from padelpy2.utils import popen_timeout
 
+__all__ = ["PADEL_PATH", "padeldescriptor"]
 
 PADEL_PATH = join(
-    dirname(abspath(__file__)),
-    "PaDEL-Descriptor",
-    "PaDEL-Descriptor.jar"
+    dirname(abspath(__file__)), "PaDEL-Descriptor", "PaDEL-Descriptor.jar"
 )
 
 
 def padeldescriptor(
-        maxruntime: int = -1,
-        waitingjobs: int = -1,
-        threads: int = -1,
-        d_2d: bool = False,
-        d_3d: bool = False,
-        config: PathLike = None,
-        convert3d: bool = False,
-        descriptortypes: PathLike = None,
-        detectaromaticity: bool = False,
-        mol_dir: PathLike = None,
-        d_file: PathLike = None,
-        fingerprints: bool = False,
-        log: bool = False,
-        maxcpdperfile: int = 0,
-        removesalt: bool = False,
-        retain3d: bool = False,
-        retainorder: bool = True,
-        standardizenitro: bool = False,
-        standardizetautomers: bool = False,
-        tautomerlist: PathLike = None,
-        usefilenameasmolname: bool = False,
-        sp_timeout: int = None,
-        headless: bool = True,
-        use_tempfile: bool = False
-     ) -> Union[PathLike, None]:
+    maxruntime: int = -1,
+    waitingjobs: int = -1,
+    threads: int = -1,
+    d_2d: bool = False,
+    d_3d: bool = False,
+    config: PathLike = None,
+    convert3d: bool = False,
+    descriptortypes: PathLike = None,
+    detectaromaticity: bool = False,
+    mol_dir: PathLike = None,
+    d_file: PathLike = None,
+    fingerprints: bool = False,
+    log: bool = False,
+    maxcpdperfile: int = 0,
+    removesalt: bool = False,
+    retain3d: bool = False,
+    retainorder: bool = True,
+    standardizenitro: bool = False,
+    standardizetautomers: bool = False,
+    tautomerlist: PathLike = None,
+    usefilenameasmolname: bool = False,
+    sp_timeout: int = None,
+    headless: bool = True,
+    use_tempfile: bool = False,
+) -> Union[PathLike, None]:
     """
     Execute PaDEL-Descriptor with specified parameters.
 
@@ -119,54 +118,62 @@ def padeldescriptor(
         raise ReferenceError("Java JRE 6+ not found.")
 
     if headless:
-        command = f"java -Djava.awt.headless=true -jar {PADEL_PATH}"
+        argv = ["java", "-Djava.awt.headless=true", "-jar", PADEL_PATH]
     else:
-        command = f"java -jar {PADEL_PATH}"
+        argv = ["java", "-jar", PADEL_PATH]
 
     if d_file is None and use_tempfile:
         with NamedTemporaryFile("w", delete=False, suffix=".csv") as outfile:
             d_file = outfile.name
 
-    command += f" -maxruntime {maxruntime}"
-    command += f" -waitingjobs {waitingjobs}"
-    command += f" -threads {threads}"
-    command += f" -maxcpdperfile {maxcpdperfile}"
+    argv.extend(
+        [
+            "-maxruntime",
+            str(maxruntime),
+            "-waitingjobs",
+            str(waitingjobs),
+            "-threads",
+            str(threads),
+            "-maxcpdperfile",
+            str(maxcpdperfile),
+        ]
+    )
     if d_2d:
-        command += " -2d"
+        argv.append("-2d")
     if d_3d:
-        command += " -3d"
+        argv.append("-3d")
     if config:
-        command += f" -config {config}"
+        argv.extend(["-config", str(config)])
     if convert3d:
-        command += " -convert3d"
+        argv.append("-convert3d")
     if descriptortypes:
-        command += f" -descriptortypes {descriptortypes}"
+        argv.extend(["-descriptortypes", str(descriptortypes)])
     if detectaromaticity:
-        command += " -detectaromaticity"
+        argv.append("-detectaromaticity")
     if mol_dir:
-        command += f" -dir {mol_dir}"
+        argv.extend(["-dir", str(mol_dir)])
     if d_file:
-        command += f" -file {d_file}"
+        argv.extend(["-file", str(d_file)])
     if fingerprints:
-        command += " -fingerprints"
+        argv.append("-fingerprints")
     if log:
-        command += " -log"
+        argv.append("-log")
     if removesalt:
-        command += " -removesalt"
+        argv.append("-removesalt")
     if retain3d:
-        command += " -retain3d"
+        argv.append("-retain3d")
     if retainorder:
-        command += " -retainorder"
+        argv.append("-retainorder")
     if standardizenitro:
-        command += " -standardizenitro"
+        argv.append("-standardizenitro")
     if standardizetautomers:
-        command += " -standardizetautomers"
+        argv.append("-standardizetautomers")
     if tautomerlist:
-        command += f" -tautomerlist {tautomerlist}"
+        argv.extend(["-tautomerlist", str(tautomerlist)])
     if usefilenameasmolname:
-        command += f" -usefilenameasmolname"
+        argv.append("-usefilenameasmolname")
 
-    _, err = popen_timeout(command, sp_timeout)
+    _, err = popen_timeout(argv, sp_timeout)
     if err != b"":
         raise RuntimeError(
             f"PaDEL-Descriptor encountered an error: {err.decode('utf-8')}"

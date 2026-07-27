@@ -5,53 +5,69 @@
 [![PyPI version](https://badge.fury.io/py/padelpy2.svg)](https://badge.fury.io/py/padelpy2)
 [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/LICENSE)
 
-**padelpy2** is a Python wrapper for the [PaDEL-Descriptor](http://www.yapcwsoft.com/dd/padeldescriptor/) software, enabling fast and flexible calculation of molecular descriptors and fingerprints directly from Python.
+**padelpy2** is a Python bridge to the **stock** [PaDEL-Descriptor](http://www.yapcwsoft.com/dd/padeldescriptor/) Java application (Yap, 2011). It provides an RDKit-native `Calculator` with `pandas` DataFrame results, typed descriptor/fingerprint catalogs, and a low-level `padeldescriptor` CLI surface compatible with [padelpy](https://github.com/ecrl/padelpy).
 
-📚 **Documentation:** For full API usage details, see the [padelpy2 documentation page](https://cognitive-chemistry-labs.github.io/padelpy2/).
+**Documentation:** [API and guides](https://cognitive-chemistry-labs.github.io/padelpy2/) · [When to use which package](https://cognitive-chemistry-labs.github.io/padelpy2/when_to_use.html)
 
+## When to use
+
+| Need | Prefer |
+|------|--------|
+| Minimal env; SMILES/SDF → dicts; no RDKit/pandas | [padelpy](https://github.com/ecrl/padelpy) |
+| Stock Yap JAR; file/`padeldescriptor` only (no RDKit/pandas) | **padelpy2** (default install) |
+| Stock Yap JAR + RDKit → DataFrame `Calculator` | **padelpy2** with `[calc]` |
+| General descriptors without PaDEL identity | mordredcommunity or RDKit |
+
+See the [when-to-use guide](https://cognitive-chemistry-labs.github.io/padelpy2/when_to_use.html) for stock-JAR fidelity notes.
 
 ## Features
 
-- Compute 2D and 3D molecular descriptors and fingerprints using PaDEL-Descriptor
-- Simple, object-oriented API for descriptor/fingerprint selection and calculation
-- Native support for RDKit molecules
-- Highly configurable (multithreading, 3D conversion, custom descriptor sets, etc.)
-- Returns results as pandas DataFrames for easy downstream analysis
+- Stock Yap PaDEL-Descriptor JAR (same family as padelpy)
+- RDKit `Mol` → `pandas` DataFrame via `Calculator`
+- Typed 2D/3D descriptor and fingerprint catalogs; custom subsets
+- `PaDELConfig` for PaDEL CLI-aligned options (threads, aromaticity, salts, …)
+- Low-level `padeldescriptor` for file-based / padelpy-style workflows
+- Regression oracles pinning stock-JAR column schemas and values
 
 ---
 
 ## Installation
 
-### From PyPI
+### Minimal (low-level `padeldescriptor`)
 
 ```bash
 pip install padelpy2
 ```
 
-### With RDKit (PyPI version)
+Requires Python 3.9+ and a system **Java JRE 8+** on `PATH`. No pandas or RDKit.
 
-If you do not already have RDKit installed, you can install the PyPI build (version 2022.9.5) with:
+### Calculator / DataFrame workflows
 
 ```bash
-pip install padelpy2[rdkit]
+pip install "padelpy2[calc]"   # pandas + RDKit
 ```
 
-> **Note:** The PyPI build of RDKit (`rdkit-pypi==2022.9.5`) is limited and may not support all features or platforms. For best compatibility and performance, it is **strongly recommended** to install RDKit via [conda](https://www.rdkit.org/docs/Install.html) or your preferred package manager.
+Or conda-forge RDKit plus the pandas extra:
+
+```bash
+conda install -c conda-forge rdkit
+pip install "padelpy2[pandas]"
+```
+
+Stock-JAR oracle tests expect RDKit **2026.03.x** (or regenerating fixtures after an intentional RDKit bump).
 
 ### From Source
 
 ```bash
 git clone https://github.com/cognitive-chemistry-labs/padelpy2
 cd padelpy2
-pip install .
+pip install -e ".[calc]"   # or bare pip install -e . for padeldescriptor only
 ```
 
 **Requirements:**
-- Python 3.9–3.13  
-	<sup>\*If installing RDKit from pip, only Python 3.9–3.11 are supported. For Python 3.12+ use conda or another supported method.</sup>
-- [RDKit](https://www.rdkit.org/) (install via conda or pip; see note above)
-- pandas
-- **Java Runtime Environment (JRE) 6 or higher** must be installed and available on your system PATH. PaDEL-Descriptor is a Java application and will not run without Java. You can download Java from [Oracle](https://www.oracle.com/java/technologies/downloads/).
+- Python 3.9–3.13
+- **Java Runtime Environment (JRE) 8 or higher** on `PATH` (padelpy2 does not auto-download a JRE)
+- Optional: pandas + RDKit for `Calculator` / `compat` / `qc` (`padelpy2[calc]`)
 
 ---
 
@@ -63,9 +79,9 @@ from padelpy2 import Calculator, descriptors
 
 # Example molecules (SMILES)
 smiles = [
-	"CN=C=O",
-	"CC(=O)NCCC1=CNc2c1cc(OC)cc2",
-	"OCCc1c(C)[n+](cs1)Cc2cnc(C)nc2N",
+    "CN=C=O",
+    "CC(=O)NCCC1=CNc2c1cc(OC)cc2",
+    "OCCc1c(C)[n+](cs1)Cc2cnc(C)nc2N",
 ]
 mols = [Chem.AddHs(Chem.MolFromSmiles(smi)) for smi in smiles]
 
@@ -102,8 +118,8 @@ results = calc(mols)
 
 ### Calculate Specific Descriptors
 ```python
-from padelpy2.descriptors import MolecularWeight, XLogP
-calc = Calculator([MolecularWeight, XLogP])
+from padelpy2.descriptors import Weight, XLogP
+calc = Calculator([Weight, XLogP])
 results = calc(mols)
 ```
 
@@ -132,7 +148,7 @@ Calculator(descriptors: Iterable[Descriptor or Fingerprint], config: PaDELConfig
 results = calc(mols)
 ```
 - `mols`: List of RDKit Mol objects
-- Returns: pandas DataFrame
+- Returns: pandas DataFrame (engine `Name` column dropped by default)
 
 ### Descriptor and Fingerprint Sets
 - `descriptors`: All available descriptors (2D and 3D)
@@ -151,7 +167,7 @@ calc = Calculator(descriptors, config=config)
 
 ## Low-Level Wrapper Usage
 
-For advanced use cases, you can call the low-level PaDEL-Descriptor wrapper directly. This allows you to execute the underlying Java tool with custom arguments and file-based workflows.
+For advanced use cases, you can call the low-level PaDEL-Descriptor wrapper directly. This allows you to execute the underlying Java tool with custom arguments and file-based workflows. The keyword surface is aligned with padelpy for migration continuity.
 
 ### Example: Using the `padeldescriptor` Function
 
@@ -160,11 +176,11 @@ from padelpy2.wrapper import padeldescriptor
 
 # Calculate 2D descriptors for a directory of structure files (e.g., SDF or MOL)
 output_csv = padeldescriptor(
-	d_2d=True,
-	mol_dir="/path/to/structures/",  # directory or file with molecules
-	d_file="/path/to/output.csv",    # output CSV file
-	threads=4,                       # number of threads
-	headless=True                    # run in headless mode (no GUI)
+    d_2d=True,
+    mol_dir="/path/to/structures/",  # directory or file with molecules
+    d_file="/path/to/output.csv",    # output CSV file
+    threads=4,                       # number of threads
+    headless=True                    # run in headless mode (no GUI)
 )
 print(f"Results written to: {output_csv}")
 ```
@@ -188,7 +204,17 @@ See the function docstring in `padelpy2/wrapper.py` for a full list of options a
 
 - [PaDEL-Descriptor Homepage](http://www.yapcwsoft.com/dd/padeldescriptor/)
 - [Project Repository](https://github.com/cognitive-chemistry-labs/padelpy2)
+- [Documentation](https://cognitive-chemistry-labs.github.io/padelpy2/)
+- [When to use](https://cognitive-chemistry-labs.github.io/padelpy2/when_to_use.html)
+- [Migrating from padelpy](https://cognitive-chemistry-labs.github.io/padelpy2/migration.html)
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
 
 ---
 
-For more examples, see the `examples/` directory.
+## Examples
+
+- RDKit `Calculator` tutorial: [`examples/example.ipynb`](examples/example.ipynb)
+- Low-level `padeldescriptor` (no RDKit/pandas): [`examples/padeldescriptor_lowlevel.ipynb`](examples/padeldescriptor_lowlevel.ipynb)
+- Docs: [Examples](https://cognitive-chemistry-labs.github.io/padelpy2/examples.html)

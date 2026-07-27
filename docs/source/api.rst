@@ -1,8 +1,12 @@
 API Documentation
 =================
 
+Frozen exports and default catalog shapes are summarized in
+:doc:`api_stability`.
+
 .. automodule:: padelpy2
     :members:
+    :exclude-members: Calculator, PaDELConfig
     :undoc-members:
     :show-inheritance:
 

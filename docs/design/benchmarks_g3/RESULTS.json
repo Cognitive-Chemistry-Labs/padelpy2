@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "date_utc": "2026-07-27T16:26:24.886428+00:00",
+    "padelpy2_version": "0.1.0",
+    "stock_jar_sha256": "f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133",
+    "python": "3.11.8",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "processor": "arm",
+    "rdkit_version": "2026.03.4",
+    "java_note": "system java on PATH; each padeldescriptor starts a new JVM",
+    "jvm_reuse": "deferred \u2014 stock CLI JAR has no keep-alive / worker protocol",
+    "base_smiles": "CCO",
+    "descriptor": "Weight",
+    "padel_threads": 1,
+    "sizes": [
+      10,
+      100
+    ],
+    "chunk_size": 25
+  },
+  "results": [
+    {
+      "engine": "padelpy2",
+      "n": 10,
+      "chunk_size": null,
+      "cold_s": 0.886,
+      "second_call_s": 0.7109,
+      "note": "second_call is a new java -jar process (OS/page-cache warm), not JVM keep-alive"
+    },
+    {
+      "engine": "padelpy2",
+      "n": 10,
+      "chunk_size": 25,
+      "cold_s": 0.6968,
+      "second_call_s": 0.7087,
+      "note": "second_call is a new java -jar process (OS/page-cache warm), not JVM keep-alive"
+    },
+    {
+      "engine": "padelpy2",
+      "n": 100,
+      "chunk_size": null,
+      "cold_s": 0.8125,
+      "second_call_s": 0.8244,
+      "note": "second_call is a new java -jar process (OS/page-cache warm), not JVM keep-alive"
+    },
+    {
+      "engine": "padelpy2",
+      "n": 100,
+      "chunk_size": 25,
+      "cold_s": 2.9013,
+      "second_call_s": 2.9238,
+      "note": "second_call is a new java -jar process (OS/page-cache warm), not JVM keep-alive"
+    }
+  ]
+}
