@@ -33,10 +33,11 @@ ruff check padelpy2 tests
 ruff format --check padelpy2 tests
 ```
 
-Tests (integration tests require Java and RDKit):
+Tests (live JAR tests need Java + RDKit via `padelpy2[calc]`):
 
 ```bash
-pytest tests/ -q
+pytest tests/ -q                  # full suite (~30s)
+pytest tests/ -q -m "not integration"   # unit/mocked only (few seconds)
 ```
 
 Optional coverage:

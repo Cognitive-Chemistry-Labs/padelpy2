@@ -61,6 +61,9 @@ ignore = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = ["-q"]
+markers = [
+    "integration: live stock-JAR / Java subprocess tests (slower)",
+]
 
 [tool.coverage.run]
 branch = true

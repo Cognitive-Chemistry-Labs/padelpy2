@@ -86,21 +86,27 @@ def test_oracle_fixture_shapes_match_card():
     assert pd.read_csv(ORACLE_DIR / "maccs.csv").shape == (3, 166)
 
 
-def test_subset_2d_oracle():
-    expected = pd.read_csv(ORACLE_DIR / "subset_2d.csv")
-    actual = Calculator([ALOGP, Crippen, Weight], config=ORACLE_CONFIG)(
-        _mols(with_3d=False)
-    )
-    _assert_frame_close(actual, expected)
-
-
-def test_descriptors_2d_oracle():
+@pytest.mark.integration
+def test_descriptors_2d_oracle_and_benzene_sentinels():
+    """Full 2D oracle plus benzene sentinels in one JAR call."""
     expected = pd.read_csv(ORACLE_DIR / "descriptors_2d.csv")
     actual = Calculator(descriptors_2d, config=ORACLE_CONFIG)(_mols(with_3d=False))
     assert actual.shape == (3, 1444)
     _assert_frame_close(actual, expected)
 
+    assert SENTINELS["smiles"] == "c1ccccc1"
+    assert SENTINELS["row_index"] == BENZENE_ROW
+    row = actual.iloc[BENZENE_ROW]
+    for col, value in SENTINELS["columns"].items():
+        got = float(row[col])
+        assert np.isclose(got, value, rtol=REL_TOL, atol=ABS_TOL), (
+            f"benzene sentinel drift: {col} got {got}, expected {value}"
+        )
+    assert row["naAromAtom"] == 0
+    assert row["nAromBond"] == 0
 
+
+@pytest.mark.integration
 def test_maccs_oracle():
     expected = pd.read_csv(ORACLE_DIR / "maccs.csv")
     actual = Calculator([MACCSFingerprinter], config=ORACLE_CONFIG)(
@@ -110,6 +116,7 @@ def test_maccs_oracle():
     _assert_frame_close(actual, expected)
 
 
+@pytest.mark.integration
 def test_descriptors_3d_oracle():
     expected = pd.read_csv(ORACLE_DIR / "descriptors_3d.csv")
     actual = Calculator(descriptors_3d, config=ORACLE_CONFIG)(_mols(with_3d=True))
@@ -117,20 +124,13 @@ def test_descriptors_3d_oracle():
     _assert_frame_close(actual, expected)
 
 
-def test_benzene_aromatic_sentinels():
-    """Stock JAR pins aromatic/topology sentinel values for benzene."""
-    assert SENTINELS["smiles"] == "c1ccccc1"
-    assert SENTINELS["row_index"] == BENZENE_ROW
-    actual = Calculator(descriptors_2d, config=ORACLE_CONFIG)(_mols(with_3d=False))
-    row = actual.iloc[BENZENE_ROW]
-    for col, expected in SENTINELS["columns"].items():
-        got = float(row[col])
-        assert np.isclose(got, expected, rtol=REL_TOL, atol=ABS_TOL), (
-            f"benzene sentinel drift: {col} got {got}, expected {expected}"
-        )
-    # Explicit stock-JAR aromaticity contract (default config → 0 / 0).
-    assert row["naAromAtom"] == 0
-    assert row["nAromBond"] == 0
+@pytest.mark.integration
+def test_subset_2d_oracle():
+    expected = pd.read_csv(ORACLE_DIR / "subset_2d.csv")
+    actual = Calculator([ALOGP, Crippen, Weight], config=ORACLE_CONFIG)(
+        _mols(with_3d=False)
+    )
+    _assert_frame_close(actual, expected)
 
 
 @pytest.mark.parametrize(

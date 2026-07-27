@@ -35,6 +35,7 @@ def test_from_smiles_requires_catalog():
         from_smiles("CCO", descriptors=False, fingerprints=False)
 
 
+@pytest.mark.integration
 def test_from_smiles_list_dataframe(monkeypatch):
     monkeypatch.setattr(
         "padelpy2.compat._catalog",
@@ -49,6 +50,7 @@ def test_from_smiles_list_dataframe(monkeypatch):
     assert "Name" not in df.columns
 
 
+@pytest.mark.integration
 def test_from_smiles_as_dict_single_and_list(monkeypatch):
     monkeypatch.setattr(
         "padelpy2.compat._catalog",
@@ -62,6 +64,7 @@ def test_from_smiles_as_dict_single_and_list(monkeypatch):
     assert all(isinstance(row, dict) for row in many)
 
 
+@pytest.mark.integration
 def test_from_sdf_and_mdl(monkeypatch):
     monkeypatch.setattr(
         "padelpy2.compat._catalog",

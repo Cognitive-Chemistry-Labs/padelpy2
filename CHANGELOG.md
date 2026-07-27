@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CITATION.cff` (engine preferred citation: Yap 2011)
 - Coverage-gap tests (`tests/test_coverage_gaps.py`)
 - Optional dependency extras: `[pandas]`, `[rdkit]`, and `[calc]` (pandas+rdkit); low-level notebook `examples/padeldescriptor_lowlevel.ipynb`
+- Pytest `integration` marker for live JAR tests; faster default suite (~30s)
 
 ### Changed
 

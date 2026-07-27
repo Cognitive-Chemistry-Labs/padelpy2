@@ -29,6 +29,7 @@ def test_chunk_size_must_be_positive():
         calc(_mols_from_smiles(["CCO"]), chunk_size=-1)
 
 
+@pytest.mark.integration
 def test_chunk_size_concatenates_rows_and_matches_default(test_molecules):
     cfg = PaDELConfig(threads=1)
     calc = Calculator([Weight], config=cfg)
@@ -36,17 +37,10 @@ def test_chunk_size_concatenates_rows_and_matches_default(test_molecules):
     default = calc(mols)
     chunked = calc(mols, chunk_size=2)
     assert chunked.shape[0] == len(mols)
+    assert "Name" not in default.columns
     assert list(chunked.columns) == list(default.columns)
     pd.testing.assert_frame_equal(
         chunked.reset_index(drop=True),
         default.reset_index(drop=True),
         check_dtype=False,
     )
-
-
-def test_default_call_unchanged_shape():
-    smiles = ["CCO", "c1ccccc1", "CC(=O)O"]
-    calc = Calculator([Weight], config=PaDELConfig(threads=1))
-    actual = calc(_mols_from_smiles(smiles))
-    assert actual.shape == (3, len(Weight.descriptors))
-    assert "Name" not in actual.columns

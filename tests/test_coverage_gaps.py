@@ -210,6 +210,7 @@ def test_compat_mdl_failures(tmp_path):
         from_mdl(bad)
 
 
+@pytest.mark.integration
 def test_compat_supplier_adds_2d_coords(monkeypatch):
     mol = Chem.MolFromSmiles("CCO")
     assert mol.GetNumConformers() == 0
@@ -227,6 +228,7 @@ def test_compat_supplier_adds_2d_coords(monkeypatch):
     assert df.shape[0] == 1
 
 
+@pytest.mark.integration
 def test_compat_mdl_computes_2d_when_no_conformers(monkeypatch, tmp_path):
     mol = Chem.MolFromSmiles("CCO")
     path = tmp_path / "noconf.mol"

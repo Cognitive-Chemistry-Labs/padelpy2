@@ -24,6 +24,7 @@ def _benzene_2d() -> Chem.Mol:
     return mol
 
 
+@pytest.mark.integration
 def test_defaults_drop_name_and_fail_fast():
     calc = Calculator([Weight], config=PaDELConfig(threads=1))
     df = calc([_ethanol_2d()])
@@ -34,6 +35,7 @@ def test_defaults_drop_name_and_fail_fast():
         calc_3d([Chem.MolFromSmiles("CCO")])
 
 
+@pytest.mark.integration
 def test_retain_names_keeps_name_column():
     calc = Calculator([Weight], config=PaDELConfig(threads=1))
     df = calc([_ethanol_2d()], retain_names=True)
@@ -41,6 +43,7 @@ def test_retain_names_keeps_name_column():
     assert len(df) == 1
 
 
+@pytest.mark.integration
 def test_on_error_nan_isolates_invalid_mol():
     mol_bad = Chem.MolFromSmiles("CCO")  # no 3D conformer
     calc = Calculator([Autocorrelation3D], config=PaDELConfig(threads=1))
