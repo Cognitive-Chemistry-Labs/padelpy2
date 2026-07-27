@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; padelpy2 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="When to use which package" href="when_to_use.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            padelpy2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rdkit-calculator-tutorial">RDKit Calculator tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#low-level-padeldescriptor-no-rdkit-pandas">Low-level <code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> (no RDKit / pandas)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="when_to_use.html">When to use which package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from padelpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compat.html">Compatibility helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">Descriptor QC helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_stability.html">API stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">padelpy2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<section id="rdkit-calculator-tutorial">
+<h2>RDKit Calculator tutorial<a class="headerlink" href="#rdkit-calculator-tutorial" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">examples/example.ipynb</span></code> covers:</p>
+<ul class="simple">
+<li><p>environment notes (Java, RDKit, <code class="docutils literal notranslate"><span class="pre">padelpy2[calc]</span></code>)</p></li>
+<li><p>a minimal <code class="docutils literal notranslate"><span class="pre">Calculator([Weight])</span></code> example</p></li>
+<li><p>stock-JAR aromatic counts vs <code class="docutils literal notranslate"><span class="pre">detectaromaticity=True</span></code></p></li>
+<li><p>a small custom descriptor subset (ALOGP / Crippen / Weight)</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/examples/example.ipynb">https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/examples/example.ipynb</a></p>
+</section>
+<section id="low-level-padeldescriptor-no-rdkit-pandas">
+<h2>Low-level <code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> (no RDKit / pandas)<a class="headerlink" href="#low-level-padeldescriptor-no-rdkit-pandas" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">examples/padeldescriptor_lowlevel.ipynb</span></code> assumes a <strong>minimal</strong> install
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">padelpy2</span></code> only): Java on <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, file-based
+<code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code>, and stdlib CSV reading. It does <strong>not</strong> import RDKit or
+pandas, and uses <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">padelpy2.wrapper</span> <span class="pre">import</span> <span class="pre">padeldescriptor</span></code> so the
+Calculator stack is never loaded.</p>
+<p><a class="reference external" href="https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/examples/padeldescriptor_lowlevel.ipynb">https://github.com/Cognitive-Chemistry-Labs/padelpy2/blob/main/examples/padeldescriptor_lowlevel.ipynb</a></p>
+<p>Open from a checkout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">examples</span><span class="o">/</span><span class="n">padeldescriptor_lowlevel</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>Related pages: <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a>, <a class="reference internal" href="quickstart.html"><span class="doc">Quickstart</span></a>, <a class="reference internal" href="when_to_use.html"><span class="doc">When to use which package</span></a>,
+<a class="reference internal" href="migration.html"><span class="doc">Migrating from padelpy</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="when_to_use.html" class="btn btn-neutral float-right" title="When to use which package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Travis Kessler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

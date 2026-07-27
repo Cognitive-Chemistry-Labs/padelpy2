@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>padelpy2 documentation &mdash; padelpy2 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            padelpy2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="when_to_use.html">When to use which package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from padelpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compat.html">Compatibility helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">Descriptor QC helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_stability.html">API stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">padelpy2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">padelpy2 documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="padelpy2-documentation">
+<h1>padelpy2 documentation<a class="headerlink" href="#padelpy2-documentation" title="Link to this heading"></a></h1>
+<p><strong>padelpy2</strong> is a Python bridge to the <strong>stock</strong> PaDEL-Descriptor Java
+application: typed descriptor and fingerprint catalogs, an RDKit-native
+<code class="docutils literal notranslate"><span class="pre">Calculator</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame results, and a low-level
+<code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> CLI surface shared with padelpy.</p>
+<p>Start with <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> and <a class="reference internal" href="quickstart.html"><span class="doc">Quickstart</span></a>. To choose between padelpy
+and padelpy2, read <a class="reference internal" href="when_to_use.html"><span class="doc">When to use which package</span></a>. Migrating from padelpy: <a class="reference internal" href="migration.html"><span class="doc">Migrating from padelpy</span></a>.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-extras">Optional extras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-the-package">Install the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#rdkit">RDKit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#java-notes">Java notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#development-extras">Development extras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#minimal-example">Minimal example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#default-catalogs">Default catalogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#custom-subsets-and-fingerprints">Custom subsets and fingerprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#rdkit-calculator-tutorial">RDKit Calculator tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#low-level-padeldescriptor-no-rdkit-pandas">Low-level <code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> (no RDKit / pandas)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="when_to_use.html">When to use which package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="when_to_use.html#decision-table">Decision table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="when_to_use.html#stock-jar-fidelity">Stock JAR fidelity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="when_to_use.html#why-not-merge-into-padelpy">Why not merge into padelpy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="when_to_use.html#who-should-use-what">Who should use what</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from padelpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#should-you-migrate">Should you migrate?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#stock-jar-continuity">Stock JAR continuity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#concept-mapping">Concept mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#side-by-side-examples">Side-by-side examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#behavioral-differences">Behavioral differences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#validation-checkpoint">Validation checkpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compat.html">Compatibility helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compat.html#when-to-stay-on-padelpy">When to stay on padelpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat.html#when-to-use-padelpy2-compat">When to use <code class="docutils literal notranslate"><span class="pre">padelpy2.compat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat.html#import-path">Import path</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">Descriptor QC helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qc.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc.html#descriptorqcreport-fields"><code class="docutils literal notranslate"><span class="pre">DescriptorQCReport</span></code> fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#principles">Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#architecture-style">Architecture style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#component-map">Component map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#dependency-rules">Dependency rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#public-api">Public API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#domain-types">Domain types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#extension-points">Extension points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-and-control-flow">Data and control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#change-process">Change process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#jvm-reuse-deferred">JVM reuse (deferred)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#measured-snapshot">Measured snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_stability.html">API stability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_stability.html#frozen-top-level-exports">Frozen top-level exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_stability.html#frozen-calculator-behavior">Frozen <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_stability.html#default-catalog-column-counts">Default catalog column counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_stability.html#excluded-from-default-lists">Excluded from default lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_stability.html#stability-checklist-do-not-break-without-a-major-version">Stability checklist (do not break without a major version)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.padeldescriptor"><code class="docutils literal notranslate"><span class="pre">padeldescriptor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.calculator.Calculator"><code class="docutils literal notranslate"><span class="pre">Calculator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.config.PaDELConfig"><code class="docutils literal notranslate"><span class="pre">PaDELConfig</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.descriptors.Descriptor"><code class="docutils literal notranslate"><span class="pre">Descriptor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.fingerprints.Fingerprint"><code class="docutils literal notranslate"><span class="pre">Fingerprint</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#padelpy2.wrapper.padeldescriptor"><code class="docutils literal notranslate"><span class="pre">padeldescriptor()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Travis Kessler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

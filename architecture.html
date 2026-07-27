@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture &mdash; padelpy2 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Performance notes" href="performance.html" />
+    <link rel="prev" title="Descriptor QC helpers" href="qc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            padelpy2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="when_to_use.html">When to use which package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from padelpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compat.html">Compatibility helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">Descriptor QC helpers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#principles">Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-style">Architecture style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-map">Component map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependency-rules">Dependency rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#public-api">Public API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-types">Domain types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-points">Extension points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-and-control-flow">Data and control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-process">Change process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_stability.html">API stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">padelpy2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Architecture</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h1>
+<p>This page documents the package architectural philosophy and the enforceable
+design rules that keep the codebase coherent. Stable policy identifiers
+(<code class="docutils literal notranslate"><span class="pre">ARCH-NNN</span></code>) keep this narrative aligned with the maintainer-local
+verification policy. The full design rationale lives in
+<code class="docutils literal notranslate"><span class="pre">docs/design/DESIGN.md</span></code> (approved v0.3).</p>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p><strong>padelpy2</strong> owns a Python bridge to the <strong>stock</strong> PaDEL-Descriptor Java JAR:
+typed descriptor/fingerprint catalogs, an RDKit-native <code class="docutils literal notranslate"><span class="pre">Calculator</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame results, and a low-level <code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> CLI surface
+compatible with padelpy. Primary users need classic-JAR fidelity (including
+aromatic-molecule defaults pinned by oracles) and padelpy continuity.</p>
+<p>Non-goals include reimplementing PaDEL in pure Python, competing with Mordred
+or RDKit as a general descriptor engine, and multi-engine backends behind
+<code class="docutils literal notranslate"><span class="pre">Calculator</span></code>.</p>
+</section>
+<section id="principles">
+<h2>Principles<a class="headerlink" href="#principles" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-010</span></code> — Layered architecture with acyclic imports (higher layers
+depend only on lower layers).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-020</span></code> — Public subpackages expose a curated <code class="docutils literal notranslate"><span class="pre">__all__</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-030</span></code> — The Java engine is reached only through the engine-adapter
+layer (<code class="docutils literal notranslate"><span class="pre">padelpy2.wrapper</span></code> / internal worker); orchestration must not spawn
+ad hoc <code class="docutils literal notranslate"><span class="pre">java</span></code> processes elsewhere.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-040</span></code> — Default public API behavior is stable: preset catalog column
+schemas and dropping the <code class="docutils literal notranslate"><span class="pre">Name</span></code> column unless an additive opt-in says
+otherwise. See <a class="reference internal" href="api_stability.html"><span class="doc">API stability</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-050</span></code> — Optional heavy dependencies (RDKit) stay behind clear import
+boundaries and documented extras.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-055</span></code> — Vendored engine is the <strong>stock Yap JAR</strong>; document identity
+(path/hash) wherever fidelity is claimed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARCH-060</span></code> — This page remains the public architecture contract.</p></li>
+</ul>
+</section>
+<section id="architecture-style">
+<h2>Architecture style<a class="headerlink" href="#architecture-style" title="Link to this heading"></a></h2>
+<p><strong>Layered package</strong> with a functional core (catalog metadata, XML/SDF
+preparation, validation) and an imperative shell (subprocess or long-lived
+JVM worker).</p>
+</section>
+<section id="component-map">
+<h2>Component map<a class="headerlink" href="#component-map" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Components</p></th>
+<th class="head"><p>Responsibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>L0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">padelpy2/PaDEL-Descriptor/</span></code></p></td>
+<td><p>Stock JAR, CSVs, notices</p></td>
+</tr>
+<tr class="row-odd"><td><p>L1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">descriptors</span></code>, <code class="docutils literal notranslate"><span class="pre">fingerprints</span></code>,
+<code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">utils</span></code></p></td>
+<td><p>Catalogs, config, I/O utils</p></td>
+</tr>
+<tr class="row-even"><td><p>L2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wrapper</span></code></p></td>
+<td><p>Java CLI / worker adapter</p></td>
+</tr>
+<tr class="row-odd"><td><p>L3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">calculator</span></code></p></td>
+<td><p>End-to-end orchestration</p></td>
+</tr>
+<tr class="row-even"><td><p>L4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">compat</span></code>, <code class="docutils literal notranslate"><span class="pre">qc</span></code> (shipped)</p></td>
+<td><p>Migration helpers, QC reports</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dependency-rules">
+<h2>Dependency rules<a class="headerlink" href="#dependency-rules" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>L4 → L3 → L2 → L1 → L0 only (no upward or cyclic imports).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compat</span></code> and <code class="docutils literal notranslate"><span class="pre">qc</span></code> may use <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> and catalog types; they must not
+bypass the wrapper to invoke Java.</p></li>
+<li><p>Vendored assets under <code class="docutils literal notranslate"><span class="pre">PaDEL-Descriptor/</span></code> are opaque binary/metadata inputs,
+not a Python import graph.</p></li>
+</ul>
+</section>
+<section id="public-api">
+<h2>Public API<a class="headerlink" href="#public-api" title="Link to this heading"></a></h2>
+<p>Top-level exports (see package <code class="docutils literal notranslate"><span class="pre">__init__</span></code>): <code class="docutils literal notranslate"><span class="pre">Calculator</span></code>, <code class="docutils literal notranslate"><span class="pre">PaDELConfig</span></code>,
+<code class="docutils literal notranslate"><span class="pre">descriptors</span></code>, <code class="docutils literal notranslate"><span class="pre">descriptors_2d</span></code>, <code class="docutils literal notranslate"><span class="pre">descriptors_3d</span></code>, <code class="docutils literal notranslate"><span class="pre">fingerprints</span></code>,
+<code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code>, and <code class="docutils literal notranslate"><span class="pre">__version__</span></code>.</p>
+<p>Submodule catalogs: <code class="docutils literal notranslate"><span class="pre">padelpy2.descriptors</span></code> and <code class="docutils literal notranslate"><span class="pre">padelpy2.fingerprints</span></code>
+expose <code class="docutils literal notranslate"><span class="pre">Descriptor</span></code> / <code class="docutils literal notranslate"><span class="pre">Fingerprint</span></code> types and named singletons.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ARCH-020</span></code> requires each listed public package to declare an explicit
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code> as packaging matures.</p>
+</section>
+<section id="domain-types">
+<h2>Domain types<a class="headerlink" href="#domain-types" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span></code> — PaDEL descriptor class name, member names/descriptions,
+2D/3D flag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Fingerprint</span></code> — PaDEL fingerprint class name, bit count, description.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PaDELConfig</span></code> — dataclass of engine flags and subprocess timeout.</p></li>
+<li><p>Calculation results — <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> rows aligned with input molecule
+order when <code class="docutils literal notranslate"><span class="pre">retainorder</span></code> is enabled (default).</p></li>
+</ul>
+</section>
+<section id="extension-points">
+<h2>Extension points<a class="headerlink" href="#extension-points" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Pass custom iterables of <code class="docutils literal notranslate"><span class="pre">Descriptor</span></code> / <code class="docutils literal notranslate"><span class="pre">Fingerprint</span></code> instances into
+<code class="docutils literal notranslate"><span class="pre">Calculator</span></code>.</p></li>
+<li><p>Low-level <code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> for file/directory workflows (padelpy continuity).</p></li>
+<li><p>Additive <code class="docutils literal notranslate"><span class="pre">padelpy2.compat</span></code> provides padelpy-like <code class="docutils literal notranslate"><span class="pre">from_smiles</span></code> /
+<code class="docutils literal notranslate"><span class="pre">from_sdf</span></code> / <code class="docutils literal notranslate"><span class="pre">from_mdl</span></code> helpers (not a padelpy replacement).
+<code class="docutils literal notranslate"><span class="pre">padelpy2.qc</span></code> summarizes DataFrame missingness/constants (convenience only).
+Do not introduce alternate descriptor engines as drop-in <code class="docutils literal notranslate"><span class="pre">Calculator</span></code>
+backends without a design revision.</p></li>
+</ul>
+</section>
+<section id="data-and-control-flow">
+<h2>Data and control flow<a class="headerlink" href="#data-and-control-flow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Construct <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> with catalog objects → build descriptortypes XML.</p></li>
+<li><p>On call: validate RDKit molecules → write temporary SDF → invoke stock-JAR
+adapter → read CSV → return DataFrame (<code class="docutils literal notranslate"><span class="pre">Name</span></code> dropped by default).</p></li>
+<li><p>Optional <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> batches molecules behind the same public call
+signature (UX parity). JVM keep-alive is <strong>deferred</strong>: each stock-JAR call
+starts <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span></code>; see <a class="reference internal" href="performance.html"><span class="doc">Performance notes</span></a>.</p></li>
+</ol>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Temporary flat package layout (not <code class="docutils literal notranslate"><span class="pre">src/</span></code>) is accepted until packaging
+friction warrants migration (<code class="docutils literal notranslate"><span class="pre">ARCH-X001</span></code>).</p></li>
+<li><p>Shape-only integration tests are a known validation gap until stock-JAR
+fidelity oracles land (<code class="docutils literal notranslate"><span class="pre">ARCH-X002</span></code>); see design goals G2.</p></li>
+</ul>
+</section>
+<section id="change-process">
+<h2>Change process<a class="headerlink" href="#change-process" title="Link to this heading"></a></h2>
+<p>Update this page and the maintainer-local architecture policy together when
+rules change. Keep policy identifiers stable; prefer adding a new identifier
+over silently redefining an existing one. Align narrative changes with
+<code class="docutils literal notranslate"><span class="pre">docs/design/DESIGN.md</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qc.html" class="btn btn-neutral float-left" title="Descriptor QC helpers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="performance.html" class="btn btn-neutral float-right" title="Performance notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Travis Kessler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

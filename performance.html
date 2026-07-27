@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance notes &mdash; padelpy2 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API stability" href="api_stability.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            padelpy2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="when_to_use.html">When to use which package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from padelpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compat.html">Compatibility helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">Descriptor QC helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Performance notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jvm-reuse-deferred">JVM reuse (deferred)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measured-snapshot">Measured snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_stability.html">API stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">padelpy2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Performance notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/performance.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performance-notes">
+<h1>Performance notes<a class="headerlink" href="#performance-notes" title="Link to this heading"></a></h1>
+<p>padelpy2 starts the <strong>stock</strong> PaDEL-Descriptor CLI (<code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span></code>) for each
+<code class="docutils literal notranslate"><span class="pre">padeldescriptor</span></code> call. Timing numbers below are a <strong>local snapshot</strong>, not a
+claim of unique speed versus other descriptor engines.</p>
+<section id="jvm-reuse-deferred">
+<h2>JVM reuse (deferred)<a class="headerlink" href="#jvm-reuse-deferred" title="Link to this heading"></a></h2>
+<p>True JVM keep-alive / warm workers are <strong>not implemented</strong>. The vendored stock
+JAR exposes no keep-alive worker API. Reuse would require a custom long-lived
+process protocol, which is out of scope for G3. For large molecule lists, use
+optional <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> on <code class="docutils literal notranslate"><span class="pre">Calculator.__call__</span></code> (see <a class="reference internal" href="quickstart.html"><span class="doc">Quickstart</span></a>).
+Each chunk still starts a new JVM, so chunking bounds batch size and may
+<strong>increase</strong> wall time for small descriptor sets.</p>
+</section>
+<section id="measured-snapshot">
+<h2>Measured snapshot<a class="headerlink" href="#measured-snapshot" title="Link to this heading"></a></h2>
+<p>Regenerated with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">bench_padelpy2</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">sizes</span> <span class="mi">10</span><span class="p">,</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>Full method notes and machine-readable JSON live in the repository under
+<code class="docutils literal notranslate"><span class="pre">docs/design/benchmarks_g3/</span></code> (see <code class="docutils literal notranslate"><span class="pre">METHOD.md</span></code> and <code class="docutils literal notranslate"><span class="pre">RESULTS.md</span></code>).</p>
+<p><strong>Hardware / environment (snapshot):</strong> macOS arm64; Python 3.11.8; RDKit
+2026.03.4; padelpy2 0.2.0; stock JAR sha256
+<code class="docutils literal notranslate"><span class="pre">f13940cd98dcdeadc54124f4111081c740fcc6effbfa33cf494125b707cad133</span></code>;
+<code class="docutils literal notranslate"><span class="pre">PaDELConfig(threads=1)</span></code>; ethanol × N; descriptor <code class="docutils literal notranslate"><span class="pre">Weight</span></code>; chunk size 25.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Wall seconds (illustrative)</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 12.5%" />
+<col style="width: 18.8%" />
+<col style="width: 18.8%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Engine</p></th>
+<th class="head"><p>N</p></th>
+<th class="head"><p>chunk_size</p></th>
+<th class="head"><p>cold_s</p></th>
+<th class="head"><p>second_call_s</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>padelpy2</p></td>
+<td><p>10</p></td>
+<td><p>—</p></td>
+<td><p>0.89</p></td>
+<td><p>0.71</p></td>
+</tr>
+<tr class="row-odd"><td><p>padelpy2</p></td>
+<td><p>10</p></td>
+<td><p>25</p></td>
+<td><p>0.70</p></td>
+<td><p>0.71</p></td>
+</tr>
+<tr class="row-even"><td><p>padelpy2</p></td>
+<td><p>100</p></td>
+<td><p>—</p></td>
+<td><p>0.81</p></td>
+<td><p>0.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>padelpy2</p></td>
+<td><p>100</p></td>
+<td><p>25</p></td>
+<td><p>2.90</p></td>
+<td><p>2.92</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">second_call_s</span></code> is a second <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span></code> process (OS cache warm), not an
+in-process JVM.</p>
+</section>
+<section id="interpretation">
+<h2>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Cold startup of the stock JAR dominates for small N and small catalogs.</p></li>
+<li><p>Chunking with the stock CLI is <strong>not</strong> a free speedup: more chunks means more
+JVM starts. Prefer single-batch runs unless you need smaller per-batch
+footprints.</p></li>
+<li><p>Prefer single-batch <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> calls unless you need smaller per-batch
+footprints; see <a class="reference internal" href="when_to_use.html"><span class="doc">When to use which package</span></a> for package choice.</p></li>
+</ul>
+<p>See also <a class="reference internal" href="architecture.html"><span class="doc">Architecture</span></a> and <a class="reference internal" href="api_stability.html"><span class="doc">API stability</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_stability.html" class="btn btn-neutral float-right" title="API stability" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Travis Kessler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
